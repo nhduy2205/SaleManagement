@@ -1,11 +1,10 @@
-$primary-color: #2b3648;
-$secondary-color: #ffc000;
+@import 'color';
+@import 'reset';
 
 body {
   background-color: $primary-color;
   color: white;
   height: 100%;
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   line-height: 1.5;
   background: url(../img/bg-login.jpg);
   background-attachment: fixed;

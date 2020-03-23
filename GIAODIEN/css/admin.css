@@ -1,0 +1,64 @@
+* {
+  font-size: 16px;
+  box-sizing: border-box;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.header {
+  width: 100%;
+}
+.header-info {
+  text-align: right;
+  width: 100%;
+  padding: 0.2rem 2rem;
+  background-color: #2b3648;
+  color: #ffc000;
+  border-bottom: rgba(128, 128, 128, 0.8) solid 1px;
+}
+.header-info i {
+  padding-right: 0.5rem;
+}
+
+.header-bg {
+  background-color: #2b3648;
+  position: sticky;
+  top: 0;
+  z-index: 1;
+}
+.header-bg .header-logo {
+  margin-right: 2rem;
+  color: #ffc000;
+  font-weight: bold;
+  letter-spacing: 3px;
+  text-shadow: 2px 2px 4px rgba(255, 255, 255, 0.5);
+}
+.header-bg .header-item {
+  padding: 0 2rem;
+  color: white !important;
+  font-weight: bold;
+  letter-spacing: 1px;
+  transition: 0.3s;
+}
+.header-bg .header-item:hover {
+  color: rgba(255, 192, 0, 0.8) !important;
+}
+
+.admin {
+  line-height: 1.5;
+  padding: 2rem 0;
+}
+.admin-title {
+  font-weight: 600;
+  letter-spacing: 2px;
+}
+.admin .assign {
+  padding: 1rem 0.5rem;
+}
+.admin .assign table {
+  box-shadow: 0px 3px 14px -1px rgba(0, 0, 0, 0.75);
+}
+.admin .numeral {
+  padding: 1rem 0.5rem;
+}
+
+/*# sourceMappingURL=admin.css.map */

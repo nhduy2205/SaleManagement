@@ -8,209 +8,125 @@
       name="viewport"
       content="width=device-width, initial-scale=1, shrink-to-fit=no"
     />
-
     <!-- Bootstrap CSS -->
     <link
       rel="stylesheet"
       href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
     />
+    <link rel="stylesheet" href="css/admin.css" />
     <link
       rel="stylesheet"
-      href="https://use.fontawesome.com/releases/v5.7.0/css/all.css"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
     />
-    <link rel="stylesheet" href="css/style.css" />
   </head>
   <body>
     <section class="header">
-      <div class="top-info"></div>
-      <div class="top-menu">
-        <div class="container">
-          <div class="row">
-            <div class="col-12 col-lg-3 menu-item">
-              <span><i class="fa fa-home" aria-hidden="true"></i>Home</span>
-            </div>
-            <div class="col-12 col-lg-3 menu-item">
-              <span
-                ><i class="fas fa-store  " aria-hidden="true"></i
-                >Warehouse</span
-              >
-            </div>
-            <div class="col-12 col-lg-3 menu-item">
-              <span
-                ><i class="fa fa-signal" aria-hidden="true"></i>Analytics</span
-              >
-            </div>
-            <div class="col-12 col-lg-3 menu-item">
-              <span
-                ><i class="fa fa-user" aria-hidden="true"></i>Employees</span
-              >
-            </div>
-          </div>
-        </div>
+      <div class="header-info">
+        <i class="fa fa-user" aria-hidden="true"></i>Admin
       </div>
     </section>
-    <section class="container content">
-      <div class="row">
-        <div class="col-12 col-lg-3">
-          <div class="card bg-light mb-3" style="max-width: 18rem;">
-            <div class="card-header">Menu</div>
-            <div class="card-body">
-              <span
-                ><a href="#" class="card-text" style="display:block"
-                  >menu1</a
-                ></span
-              >
-              <span
-                ><a href="#" class="card-text" style="display:block"
-                  >menu2</a
-                ></span
-              >
-              <span
-                ><a href="#" class="card-text" style="display:block"
-                  >menu3</a
-                ></span
-              >
-            </div>
-          </div>
-        </div>
-        <div class="col-12 col-lg-9">
-          <table class="table">
-            <thead class="thead-dark">
-              <tr>
-                <th scope="col">#</th>
-                <th scope="col">First</th>
-                <th scope="col">Last</th>
-                <th scope="col">Handle</th>
-                <th scope="col">Action</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <th scope="row">1</th>
-                <td>Mark</td>
-                <td>Otto</td>
-                <td>@mdo</td>
-                <td>
-                  <div class="btn btn-success">Sửa</div>
-                  <div class="btn btn-danger">Xóa</div>
-                </td>
-              </tr>
-              <tr>
-                <th scope="row">2</th>
-                <td>Jacob</td>
-                <td>Thornton</td>
-                <td>@fat</td>
-                <td>
-                  <div class="btn btn-success">Sửa</div>
-                  <div class="btn btn-danger">Xóa</div>
-                </td>
-              </tr>
-              <tr>
-                <th scope="row">3</th>
-                <td>Larry</td>
-                <td>the Bird</td>
-                <td>@twitter</td>
-                <td>
-                  <div class="btn btn-success">Sửa</div>
-                  <div class="btn btn-danger">Xóa</div>
-                </td>
-              </tr>
-            </tbody>
-          </table>
+    <!-- menu -->
+    <nav class="navbar navbar-expand-lg navbar-light header-bg">
+      <a class="navbar-brand header-logo" href="#">SALE MANAGEMENT</a>
+      <button
+        class="navbar-toggler"
+        type="button"
+        data-toggle="collapse"
+        data-target="#navbarNavAltMarkup"
+        aria-controls="navbarNavAltMarkup"
+        aria-expanded="false"
+        aria-label="Toggle navigation"
+      >
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+        <div class="navbar-nav">
+          <a class="nav-item nav-link active header-item" href="#"
+            >Lập kế hoạch<span class="sr-only">(current)</span></a
+          >
+          <a class="nav-item nav-link header-item" href="#">Kho hàng</a>
+          <a class="nav-item nav-link header-item" href="#">Nhập hàng</a>
+          <a class="nav-item nav-link header-item" href="#">Nhân viên</a>
         </div>
       </div>
-    </section>
+    </nav>
 
-    <!-- don hang -->
-    <section class="order">
-      <div class="col-12 col-lg-9">
-        <h3 class="text-secondary">Thông tin đơn hàng</h3>
-        <form action="">
-          <div class="row">
-            <div class="col-12 col-lg-8">
-              <div class="input-group mb-3">
-                <div class="input-group-prepend">
-                  <span class="input-group-text" id="basic-addon3">Họ tên</span>
-                </div>
-                <input
-                  type="text"
-                  class="form-control"
-                  id="basic-url"
-                  aria-describedby="basic-addon3"
-                />
+    <section class="admin">
+      <div class="container">
+        <div class="admin-title">LẬP KẾ HOẠCH</div>
+        <div class="row">
+          <div class="col-12 col-lg-9 assign">
+            <table class="table">
+              <thead class="thead-dark">
+                <tr>
+                  <th scope="col">STT</th>
+                  <th scope="col">Mã NV</th>
+                  <th scope="col">Họ tên</th>
+                  <th scope="col">Ngày sinh</th>
+                  <th scope="col">Địa bàn</th>
+                  <th scope="col">Lập kế hoạch</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <th scope="row">1</th>
+                  <td>B1605327</td>
+                  <td>Nguyen Hoang Duy</td>
+                  <td>22/05/97</td>
+                  <td>Phong Dien - Can Tho</td>
+                  <td>
+                    <a href="#"
+                      ><i class="fa fa-pencil" aria-hidden="true"></i>Phân
+                      công</a
+                    >
+                  </td>
+                </tr>
+                <tr>
+                  <th scope="row">1</th>
+                  <td>B1605327</td>
+                  <td>Nguyen Hoang Duy</td>
+                  <td>22/05/97</td>
+                  <td>Phong Dien - Can Tho</td>
+                  <td>
+                    <a href="#"
+                      ><i class="fa fa-pencil" aria-hidden="true"></i>Phân
+                      công</a
+                    >
+                  </td>
+                </tr>
+                <tr>
+                  <th scope="row">1</th>
+                  <td>B1605327</td>
+                  <td>Nguyen Hoang Duy</td>
+                  <td>22/05/97</td>
+                  <td>Phong Dien - Can Tho</td>
+                  <td>
+                    <a href="#"
+                      ><i class="fa fa-pencil" aria-hidden="true"></i>Phân
+                      công</a
+                    >
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <div class="col-12 col-lg-3 numeral">
+            <div class="card" style="width: 18rem;">
+              <div class="card-header">
+                Chỉ số
               </div>
-              <div class="input-group mb-3">
-                <div class="input-group-prepend">
-                  <span class="input-group-text" id="basic-addon3"
-                    >Chi nhánh</span
-                  >
-                </div>
-                <input
-                  type="text"
-                  class="form-control"
-                  id="basic-url"
-                  aria-describedby="basic-addon3"
-                />
-              </div>
-            </div>
-            <div class="col-12 col-lg-4">
-              <div class="input-group mb-3">
-                <div class="input-group-prepend">
-                  <span class="input-group-text" id="basic-addon3"
-                    >Số điện thoại</span
-                  >
-                </div>
-                <input
-                  type="text"
-                  class="form-control"
-                  id="basic-url"
-                  aria-describedby="basic-addon3"
-                />
-              </div>
-              <div class="input-group mb-3">
-                <div class="input-group-prepend">
-                  <span class="input-group-text" id="basic-addon3"
-                    >Ngày sinh</span
-                  >
-                </div>
-                <input
-                  type="date"
-                  class="form-control"
-                  id="basic-url"
-                  aria-describedby="basic-addon3"
-                />
-              </div>
-            </div>
-
-            <div class="col-12 col-lg-12">
-              <table class="table">
-                <thead class="thead-dark">
-                  <tr>
-                    <th scope="col">ID</th>
-                    <th scope="col">Tên sản phẩm</th>
-                    <th scope="col">Giá</th>
-                    <th scope="col">Số lượng</th>
-                    <th scope="col">Tổng cộng</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr>
-                    <th scope="row">1</th>
-                    <td>Coca cola</td>
-                    <td>12000</td>
-                    <td>3</td>
-                    <td>
-                      36000
-                    </td>
-                  </tr>
-                </tbody>
+              <table>
+                <tr>
+                  <th>Hoàn thành</th>
+                  <td>90%</td>
+                </tr>
               </table>
             </div>
           </div>
-          <div class="btn btn-success">Xác nhận</div>
-        </form>
+        </div>
       </div>
     </section>
+    <footer class="footer"></footer>
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
