@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Title</title>
+    <!-- Required meta tags -->
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, shrink-to-fit=no"
+    />
+
+    <!-- Bootstrap CSS -->
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://use.fontawesome.com/releases/v5.7.0/css/all.css"
+    />
+    <link rel="stylesheet" href="css/style.css" />
+  </head>
+  <body>
+    <section class="header">
+      <div class="top-info"></div>
+      <div class="top-menu">
+        <div class="container">
+          <div class="row">
+            <div class="col-12 col-lg-3 menu-item">
+              <span><i class="fa fa-home" aria-hidden="true"></i>Home</span>
+            </div>
+            <div class="col-12 col-lg-3 menu-item">
+              <span
+                ><i class="fas fa-store  " aria-hidden="true"></i
+                >Warehouse</span
+              >
+            </div>
+            <div class="col-12 col-lg-3 menu-item">
+              <span
+                ><i class="fa fa-signal" aria-hidden="true"></i>Analytics</span
+              >
+            </div>
+            <div class="col-12 col-lg-3 menu-item">
+              <span
+                ><i class="fa fa-user" aria-hidden="true"></i>Employees</span
+              >
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section class="container content">
+      <div class="row">
+        <div class="col-12 col-lg-3">
+          <div class="card bg-light mb-3" style="max-width: 18rem;">
+            <div class="card-header">Menu</div>
+            <div class="card-body">
+              <span
+                ><a href="#" class="card-text" style="display:block"
+                  >menu1</a
+                ></span
+              >
+              <span
+                ><a href="#" class="card-text" style="display:block"
+                  >menu2</a
+                ></span
+              >
+              <span
+                ><a href="#" class="card-text" style="display:block"
+                  >menu3</a
+                ></span
+              >
+            </div>
+          </div>
+        </div>
+        <div class="col-12 col-lg-9">
+          <table class="table">
+            <thead class="thead-dark">
+              <tr>
+                <th scope="col">#</th>
+                <th scope="col">First</th>
+                <th scope="col">Last</th>
+                <th scope="col">Handle</th>
+                <th scope="col">Action</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <th scope="row">1</th>
+                <td>Mark</td>
+                <td>Otto</td>
+                <td>@mdo</td>
+                <td>
+                  <div class="btn btn-success">Sửa</div>
+                  <div class="btn btn-danger">Xóa</div>
+                </td>
+              </tr>
+              <tr>
+                <th scope="row">2</th>
+                <td>Jacob</td>
+                <td>Thornton</td>
+                <td>@fat</td>
+                <td>
+                  <div class="btn btn-success">Sửa</div>
+                  <div class="btn btn-danger">Xóa</div>
+                </td>
+              </tr>
+              <tr>
+                <th scope="row">3</th>
+                <td>Larry</td>
+                <td>the Bird</td>
+                <td>@twitter</td>
+                <td>
+                  <div class="btn btn-success">Sửa</div>
+                  <div class="btn btn-danger">Xóa</div>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <!-- don hang -->
+    <section class="order">
+      <div class="col-12 col-lg-9">
+        <h3 class="text-secondary">Thông tin đơn hàng</h3>
+        <form action="">
+          <div class="row">
+            <div class="col-12 col-lg-8">
+              <div class="input-group mb-3">
+                <div class="input-group-prepend">
+                  <span class="input-group-text" id="basic-addon3">Họ tên</span>
+                </div>
+                <input
+                  type="text"
+                  class="form-control"
+                  id="basic-url"
+                  aria-describedby="basic-addon3"
+                />
+              </div>
+              <div class="input-group mb-3">
+                <div class="input-group-prepend">
+                  <span class="input-group-text" id="basic-addon3"
+                    >Chi nhánh</span
+                  >
+                </div>
+                <input
+                  type="text"
+                  class="form-control"
+                  id="basic-url"
+                  aria-describedby="basic-addon3"
+                />
+              </div>
+            </div>
+            <div class="col-12 col-lg-4">
+              <div class="input-group mb-3">
+                <div class="input-group-prepend">
+                  <span class="input-group-text" id="basic-addon3"
+                    >Số điện thoại</span
+                  >
+                </div>
+                <input
+                  type="text"
+                  class="form-control"
+                  id="basic-url"
+                  aria-describedby="basic-addon3"
+                />
+              </div>
+              <div class="input-group mb-3">
+                <div class="input-group-prepend">
+                  <span class="input-group-text" id="basic-addon3"
+                    >Ngày sinh</span
+                  >
+                </div>
+                <input
+                  type="date"
+                  class="form-control"
+                  id="basic-url"
+                  aria-describedby="basic-addon3"
+                />
+              </div>
+            </div>
+
+            <div class="col-12 col-lg-12">
+              <table class="table">
+                <thead class="thead-dark">
+                  <tr>
+                    <th scope="col">ID</th>
+                    <th scope="col">Tên sản phẩm</th>
+                    <th scope="col">Giá</th>
+                    <th scope="col">Số lượng</th>
+                    <th scope="col">Tổng cộng</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <th scope="row">1</th>
+                    <td>Coca cola</td>
+                    <td>12000</td>
+                    <td>3</td>
+                    <td>
+                      36000
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+          <div class="btn btn-success">Xác nhận</div>
+        </form>
+      </div>
+    </section>
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+  </body>
+</html>
