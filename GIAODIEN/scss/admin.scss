@@ -1,0 +1,60 @@
+@import 'color';
+@import 'reset';
+
+.header {
+  width: 100%;
+  &-info {
+    text-align: right;
+    width: 100%;
+    padding: 0.2rem 2rem;
+    background-color: $primary-color;
+    color: $secondary-color;
+    border-bottom: rgba($color: gray, $alpha: 0.8) solid 1px;
+    i {
+      padding-right: 0.5rem;
+    }
+  }
+}
+
+.header-bg {
+  background-color: $primary-color;
+  position: sticky;
+  top: 0;
+  z-index: 1;
+  .header-logo {
+    margin-right: 2rem;
+    color: $secondary-color;
+    font-weight: bold;
+    letter-spacing: 3px;
+    text-shadow: 2px 2px 4px rgba($color: white, $alpha: 0.5);
+  }
+  .header-item {
+    padding: 0 2rem;
+    color: white !important;
+    font-weight: bold;
+    letter-spacing: 1px;
+    transition: 0.3s;
+    &:hover {
+      color: rgba($color: $secondary-color, $alpha: 0.8) !important;
+    }
+  }
+}
+
+.admin {
+  line-height: 1.5;
+  padding: 2rem 0;
+  &-title {
+    font-weight: 600;
+    letter-spacing: 2px;
+  }
+  .assign {
+    padding: 1rem 0.5rem;
+
+    table {
+      box-shadow: $box-shadow;
+    }
+  }
+  .numeral {
+    padding: 1rem 0.5rem;
+  }
+}
