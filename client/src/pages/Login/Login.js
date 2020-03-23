@@ -38,11 +38,7 @@ function Login(props) {
             />
           </div>
         </div>
-        <input
-          type='submit'
-          className='btn login-button'
-          defaultValue='Sigin'
-        />
+        <input type='submit' className='btn login-button' Value='Sign in' />
       </form>
     </div>
   );
