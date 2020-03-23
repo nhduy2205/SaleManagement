@@ -60,7 +60,7 @@ router.post(
                   role: user.role
                 }
             };
-            console.log(payload)
+            // console.log(payload)
         
             jwt.sign(
             payload,
