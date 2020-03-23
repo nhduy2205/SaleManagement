@@ -1,0 +1,4 @@
+{
+    "mongoURI": "mongodb+srv://admin:admin@mongo-of-dong-xyphl.mongodb.net/salemanagement?retryWrites=true&w=majority",
+    "jwtSecret": "nguyenhophudong"
+}
