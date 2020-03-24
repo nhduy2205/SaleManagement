@@ -1,10 +1,11 @@
-import React, { Fragment, useState } from 'react';
+import React, {  useState } from 'react';
 import PropTypes from 'prop-types';
 import './../../scss/login.scss';
 import { Redirect } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { login } from './../../actions/auth';
 import jwtDecode from 'jwt-decode';
+import Alert from '../../components/Alert/Alert';
 const Login = ({ login, isAuthenticated }) => {
   const [formData, setFormData] = useState({
     email: '',
@@ -66,12 +67,14 @@ const Login = ({ login, isAuthenticated }) => {
             />
           </div>
         </div>
+        <Alert/>
         <input
           type='submit'
           className='btn login-button'
           value='Sign in'
           onClick={e => onSubmit(e)}
         />
+
       </form>
     </div>
   );

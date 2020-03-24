@@ -50,9 +50,9 @@ export const login = ({email, password}) => async dispatch => {
         
     } catch (error) {
         const errors = error.response.data.errors
-        // if(errors){
-        //     errors.forEach(error => dispatch(setAlert(error.msg, 'danger')));
-        // }
+        if(errors){
+            errors.forEach(error => dispatch(setAlert(error.msg, 'danger')));
+        }
         
         dispatch({
             type: LOGIN_FAIL
@@ -67,4 +67,14 @@ export const logout = () => dispatch => {
     dispatch({
         type: LOGOUT
     })
+}
+
+//getallUser
+
+export const getallUser = () => dispatch => {
+  try {
+      // const data = 
+  } catch (error) {
+    
+  }
 }

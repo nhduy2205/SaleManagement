@@ -4,12 +4,21 @@ import { Provider } from 'react-redux';
 import Login from './pages/Login/Login';
 
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
+<<<<<<< HEAD
 import Admin from './pages/Admin/Admin';
 import Navbar from './components/Navbar/Navbar';
 import PrivateRoute from './components/routing/PrivateRoute';
 import setAuthToken from './utils/setAuthToken';
 import { loadUser } from './actions/auth';
 import AddProduct from './components/AddProduct/AddProduct';
+=======
+
+import Navbar from './components/Navbar/Navbar';
+import PrivateRoute from './components/routing/PrivateRoute';
+
+
+import Admin from './pages/Admin/Admin';
+>>>>>>> 47ae6af88359406495a7f6cc8f3283cdaf00b275
 const App = () => {
   useEffect(() => {
     if (localStorage.token) {
