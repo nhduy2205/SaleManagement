@@ -61,4 +61,24 @@
   padding: 1rem 0.5rem;
 }
 
+.addproduct {
+  padding: 1rem 0.5rem;
+}
+.addproduct .input-item {
+  background: #2b3648;
+  color: #ffc000;
+  border-radius: 5px;
+}
+.addproduct .btn-addproduct {
+  background: #ffc000;
+  color: #fff;
+  border-radius: 10px;
+  box-shadow: 2px 2px 3px gray;
+  transition: 0.3s;
+}
+.addproduct .btn-addproduct:hover {
+  padding: 8px 8px;
+  box-sizing: border-box;
+}
+
 /*# sourceMappingURL=admin.css.map */

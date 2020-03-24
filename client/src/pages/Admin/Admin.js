@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import Menu from '../../components/Menu/Menu';
 import './../../scss/admin.scss';
 class Admin extends Component {
   render() {
