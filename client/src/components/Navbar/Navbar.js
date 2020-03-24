@@ -49,9 +49,9 @@ const Navbar = ({ auth: { isAuthenticated }, logout }) => {
                   >
                     Lập kế hoạch<span className='sr-only'>(current)</span>
                   </Link>
-                  <a className='nav-item nav-link header-item' href='#/'>
+                  <Link to="/warehouse" className='nav-item nav-link header-item' >
                     Kho hàng
-                  </a>
+                  </Link>
                   <Link
                     to='/addproduct'
                     className='nav-item nav-link header-item'

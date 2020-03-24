@@ -10,6 +10,7 @@ import PrivateRoute from './components/routing/PrivateRoute';
 import setAuthToken from './utils/setAuthToken';
 import { loadUser } from './actions/auth';
 import AddProduct from './pages/AddProduct/AddProduct';
+import WareHouse from './pages/WareHouse/WareHouse';
 const App = () => {
   useEffect(() => {
     if (localStorage.token) {
@@ -30,6 +31,7 @@ const App = () => {
             component={AddProduct}
           ></PrivateRoute>
           <PrivateRoute path='/plan' exact component={Admin}></PrivateRoute>
+          <PrivateRoute path='/warehouse' exact component={WareHouse}></PrivateRoute>
         </Switch>
       </Router>
     </Provider>

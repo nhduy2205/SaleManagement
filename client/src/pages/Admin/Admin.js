@@ -6,12 +6,13 @@ import Spinner from './../../components/Spinner/Spinner';
 import PlanItem from './PlanItem';
 import {getAllUser} from './../../actions/auth'
 import { Redirect } from 'react-router-dom';
-const Admin = ({getAllUser,  auth: {isAuthenticated, loading, users} }) => {
+const Admin = ({getAllUser,  auth: { loading, users} }) => {
   useEffect(() => {
     getAllUser()
   }, [getAllUser])
   const roleUser = users.filter(val => val.role === "user")
-  if(isAuthenticated === null){
+  const token = localStorage.getItem('token')
+  if(!token){
     return <Redirect to="/" exact />
   }
   return loading && users === [] ? (

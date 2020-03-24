@@ -1,5 +1,5 @@
 import {
-    ADD_PRODUCT
+    ADD_PRODUCT, GETALL_PRODUCT
 } from './../actions/types'
 
 const InitialState = {
@@ -17,7 +17,13 @@ const product = (state = InitialState, action) => {
                 product: payload,
                 loading: false
             }
-        
+        case GETALL_PRODUCT: 
+            return {
+                ...state,
+                products: payload,
+                loading: false
+
+            }
         default:
             return state
     }
