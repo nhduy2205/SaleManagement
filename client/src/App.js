@@ -1,4 +1,4 @@
-import React, { Fragment, useEffect } from 'react';
+import React, {  useEffect } from 'react';
 import store from './store';
 import { Provider } from 'react-redux';
 import Login from './pages/Login/Login';

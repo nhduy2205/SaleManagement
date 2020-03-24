@@ -23,7 +23,7 @@ const Navbar = ({ auth: { isAuthenticated }, logout }) => {
             </section>
 
             <nav className='navbar navbar-expand-lg navbar-light header-bg'>
-              <a className='navbar-brand header-logo' href='#'>
+              <a className='navbar-brand header-logo' href='#/'>
                 SALE MANAGEMENT
               </a>
               <button
@@ -42,22 +42,22 @@ const Navbar = ({ auth: { isAuthenticated }, logout }) => {
                   <Link
                     to='/plan'
                     className='nav-item nav-link active header-item'
-                    href='#'
+                    exact="true"
                   >
                     Lập kế hoạch<span className='sr-only'>(current)</span>
                   </Link>
-                  <a className='nav-item nav-link header-item' href='#'>
+                  <a className='nav-item nav-link header-item' href='#/'>
                     Kho hàng
                   </a>
                   <Link
                     to='/addproduct'
-                    exact
+                    exact="true"
                     className='nav-item nav-link header-item'
-                    href='#'
+                    
                   >
                     Nhập hàng
                   </Link>
-                  <a className='nav-item nav-link header-item' href='#'>
+                  <a className='nav-item nav-link header-item' href='#/'>
                     Nhân viên
                   </a>
                 </div>
