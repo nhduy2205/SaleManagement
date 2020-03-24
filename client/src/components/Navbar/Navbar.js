@@ -10,7 +10,7 @@ const Navbar = ({ auth: { isAuthenticated }, logout }) => {
       return '';
     } else if (isAuthenticated) {
       const decoded = jwtDecode(localStorage.getItem('token'));
-      console.log(decoded);
+    //   console.log(decoded);
       if (decoded.user.role === 'admin') {
         return (
           <Fragment>
@@ -18,11 +18,14 @@ const Navbar = ({ auth: { isAuthenticated }, logout }) => {
               <div className='header-info'>
                 <i className='fa fa-user' aria-hidden='true' />
                 Admin
+                <a href='/' onClick={logout} className='login-btn ml-3'>
+                    <i className='fa fa-sign-out'></i> Logout
+                </a>
               </div>
             </section>
 
             <nav className='navbar navbar-expand-lg navbar-light header-bg'>
-              <a className='navbar-brand header-logo' href='#'>
+              <a className='navbar-brand header-logo' href='#/'>
                 SALE MANAGEMENT
               </a>
               <button
@@ -38,16 +41,16 @@ const Navbar = ({ auth: { isAuthenticated }, logout }) => {
               </button>
               <div className='collapse navbar-collapse' id='navbarNavAltMarkup'>
                 <div className='navbar-nav'>
-                  <a className='nav-item nav-link active header-item' href='#'>
+                  <a className='nav-item nav-link active header-item' href='#/'>
                     Lập kế hoạch<span className='sr-only'>(current)</span>
                   </a>
-                  <a className='nav-item nav-link header-item' href='#'>
+                  <a className='nav-item nav-link header-item' href='#/'>
                     Kho hàng
                   </a>
-                  <a className='nav-item nav-link header-item' href='#'>
+                  <a className='nav-item nav-link header-item' href='#/'>
                     Nhập hàng
                   </a>
-                  <a className='nav-item nav-link header-item' href='#'>
+                  <a className='nav-item nav-link header-item' href='#/'>
                     Nhân viên
                   </a>
                 </div>
