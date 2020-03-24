@@ -51,7 +51,6 @@ const Navbar = ({ auth: { isAuthenticated }, logout }) => {
                   </a>
                   <Link
                     to='/addproduct'
-                    exact
                     className='nav-item nav-link header-item'
                     href='#'
                   >
