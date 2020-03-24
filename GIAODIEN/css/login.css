@@ -1,15 +1,20 @@
-body {
+* {
+  font-size: 16px;
+  box-sizing: border-box;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.bg-img {
   background-color: #2b3648;
   color: white;
   height: 100%;
-  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
   line-height: 1.5;
   background: url(../img/bg-login.jpg);
   background-attachment: fixed;
   background-size: cover;
   text-align: center;
 }
-body:after {
+.bg-img:after {
   content: "";
   position: absolute;
   top: 0;

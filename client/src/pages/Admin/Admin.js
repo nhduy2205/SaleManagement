@@ -5,7 +5,6 @@ class Admin extends Component {
   render() {
     return (
       <div>
-        <Menu />
         <section className='admin'>
           <div className='container'>
             <div className='admin-title'>LẬP KẾ HOẠCH</div>
