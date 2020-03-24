@@ -98,7 +98,7 @@ class AddProduct extends Component {
                     name='them'
                     type='submit'
                     className='btn btn-addproduct'
-                    Value='Thêm vào kho'
+                    value='Thêm vào kho'
                   />
                 </div>
               </div>

@@ -11,14 +11,17 @@ const Navbar = ({ auth: { isAuthenticated }, logout }) => {
       return '';
     } else if (isAuthenticated) {
       const decoded = jwtDecode(localStorage.getItem('token'));
-      console.log(decoded);
+    //   console.log(decoded);
       if (decoded.user.role === 'admin') {
         return (
           <Fragment>
             <section className='header'>
               <div className='header-info'>
-                <i className='fa fa-user' aria-hidden='true' />
+                <i className='fa fa-user' />
                 Admin
+                <a href='/' onClick={logout} className='login-btn ml-3'>
+                    <i className='fa fa-sign-out'></i> Logout
+                </a>
               </div>
             </section>
 

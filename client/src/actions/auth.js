@@ -73,7 +73,7 @@ export const logout = () => dispatch => {
 
 //getallUser
 
-export const getallUser = () => async dispatch => {
+export const getAllUser = () => async dispatch => {
   try {
       const res = await axios.get('/api/users');
       dispatch({
