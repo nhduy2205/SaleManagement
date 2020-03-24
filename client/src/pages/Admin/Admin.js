@@ -5,11 +5,16 @@ import { connect } from 'react-redux';
 import Spinner from './../../components/Spinner/Spinner';
 import PlanItem from './PlanItem';
 import {getAllUser} from './../../actions/auth'
-const Admin = ({getAllUser,  auth: isAuthenticated, loading }) => {
+import { Redirect } from 'react-router-dom';
+const Admin = ({getAllUser,  auth: {isAuthenticated, loading, users} }) => {
   useEffect(() => {
     getAllUser()
   }, [getAllUser])
-  return loading ? (
+  const roleUser = users.filter(val => val.role === "user")
+  if(isAuthenticated === null){
+    return <Redirect to="/" exact />
+  }
+  return loading && users === [] ? (
     <Spinner />
   ) : (
     <Fragment>
@@ -30,8 +35,11 @@ const Admin = ({getAllUser,  auth: isAuthenticated, loading }) => {
                   </tr>
                 </thead>
                 <tbody>
-                  <PlanItem />
-                  <PlanItem />
+                  {
+                    roleUser.map((val, index) => {
+                      return <PlanItem key={index} user={val} index={index}/>
+                    })
+                  }
                 </tbody>
               </table>
             </div>
