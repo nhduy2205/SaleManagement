@@ -6,7 +6,7 @@ class AddProduct extends Component {
       <section className='admin'>
         <div className='container'>
           <div className='admin-title'>THÊM SẢN PHẨM</div>
-          <form action className='addproduct'>
+          <form  className='addproduct'>
             <div className='row'>
               <div className='col-12 col-lg-4'>
                 <div className='form-group'>

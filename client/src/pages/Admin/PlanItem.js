@@ -1,14 +1,14 @@
 import React, { Fragment } from 'react'
 import PropTypes from 'prop-types'
 
-const PlanItem = props => {
+const PlanItem = ({user, index}) => {
     return (
         <Fragment>
             <tr>
-                <th scope='row'>1</th>
-                <td>B1605327</td>
-                <td>Nguyen Hoang Duy</td>
-                <td>22/05/97</td>
+                <th scope='row'>{index + 1}</th>
+                <td>{user._id}</td>
+                <td>{user.name}</td>
+                <td>{user.email}</td>
                 <td>Phong Dien - Can Tho</td>
                 <td>
                     <a href='#/'>
@@ -22,7 +22,7 @@ const PlanItem = props => {
 }
 
 PlanItem.propTypes = {
-
+    user: PropTypes.object.isRequired
 }
 
 export default PlanItem

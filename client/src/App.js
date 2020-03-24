@@ -9,7 +9,7 @@ import Navbar from './components/Navbar/Navbar';
 import PrivateRoute from './components/routing/PrivateRoute';
 import setAuthToken from './utils/setAuthToken';
 import { loadUser } from './actions/auth';
-import AddProduct from './components/AddProduct/AddProduct';
+import AddProduct from './pages/AddProduct/AddProduct';
 const App = () => {
   useEffect(() => {
     if (localStorage.token) {
