@@ -1,10 +1,14 @@
-import React, { Fragment } from 'react';
+import React, { Fragment, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import './../../scss/admin.scss';
 import { connect } from 'react-redux';
 import Spinner from './../../components/Spinner/Spinner';
 import PlanItem from './PlanItem';
-const Admin = ({ auth: isAuthenticated, loading }) => {
+import {getAllUser} from './../../actions/auth'
+const Admin = ({getAllUser,  auth: isAuthenticated, loading }) => {
+  useEffect(() => {
+    getAllUser()
+  }, [getAllUser])
   return loading ? (
     <Spinner />
   ) : (
@@ -58,4 +62,4 @@ const mapStateToProps = state => {
 Admin.propTypes = {
   auth: PropTypes.object.isRequired
 };
-export default connect(mapStateToProps, null)(Admin);
+export default connect(mapStateToProps, {getAllUser})(Admin);

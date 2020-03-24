@@ -8,6 +8,8 @@ import {
     LOGIN_SUCCESS,
     LOGIN_FAIL,
     LOGOUT,
+    GETALL_USER,
+    USER_ERROR
     
 } from './types'
 import setAuthToken from '../utils/setAuthToken'
@@ -71,10 +73,17 @@ export const logout = () => dispatch => {
 
 //getallUser
 
-export const getallUser = () => dispatch => {
+export const getAllUser = () => async dispatch => {
   try {
-      // const data = 
+      const res = await axios.get('/api/users');
+      dispatch({
+        type: GETALL_USER,
+        payload: res.data
+      })
   } catch (error) {
-    
+    dispatch({
+      type: USER_ERROR,
+      payload: error.data
+  })
   }
 }
