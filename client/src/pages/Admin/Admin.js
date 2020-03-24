@@ -1,12 +1,13 @@
-import React, { Fragment } from 'react'
-import PropTypes from 'prop-types'
-import './../../scss/admin.scss'
-import {connect} from 'react-redux';
-import Spinner from './../../components/Spinner/Spinner'
+import React, { Fragment } from 'react';
+import PropTypes from 'prop-types';
+import './../../scss/admin.scss';
+import { connect } from 'react-redux';
+import Spinner from './../../components/Spinner/Spinner';
 import PlanItem from './PlanItem';
-const Admin = ({auth: isAuthenticated, loading}) => {
-  return loading ? <Spinner/> :
-  (
+const Admin = ({ auth: isAuthenticated, loading }) => {
+  return loading ? (
+    <Spinner />
+  ) : (
     <Fragment>
       <section className='admin'>
         <div className='container'>
@@ -25,9 +26,8 @@ const Admin = ({auth: isAuthenticated, loading}) => {
                   </tr>
                 </thead>
                 <tbody>
-                  <PlanItem/>
-                  <PlanItem/> 
-                 
+                  <PlanItem />
+                  <PlanItem />
                 </tbody>
               </table>
             </div>
@@ -48,15 +48,14 @@ const Admin = ({auth: isAuthenticated, loading}) => {
         </div>
       </section>
     </Fragment>
-  )
-}
+  );
+};
 const mapStateToProps = state => {
   return {
     auth: state.auth
-  }
-}
+  };
+};
 Admin.propTypes = {
   auth: PropTypes.object.isRequired
-}
-export default connect(mapStateToProps, null)(Admin)
-
+};
+export default connect(mapStateToProps, null)(Admin);

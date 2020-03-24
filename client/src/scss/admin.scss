@@ -58,3 +58,24 @@
     padding: 1rem 0.5rem;
   }
 }
+
+// scss add product
+.addproduct {
+  padding: 1rem 0.5rem;
+  .input-item {
+    background: $primary-color;
+    color: $secondary-color;
+    border-radius: 5px;
+  }
+  .btn-addproduct {
+    background: $secondary-color;
+    color: #fff;
+    border-radius: 10px;
+    box-shadow: 2px 2px 3px gray;
+    transition: 0.3s;
+    &:hover {
+      padding: 8px 8px;
+      box-sizing: border-box;
+    }
+  }
+}
