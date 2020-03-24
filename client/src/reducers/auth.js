@@ -4,7 +4,9 @@ import {
     USER_LOADED,    
     LOGIN_SUCCESS,
     LOGIN_FAIL,
-    LOGOUT
+    LOGOUT,
+    
+    GETALL_USER
 } from './../actions/types';
 const InitialState = {
     token: localStorage.getItem('token'),
@@ -17,6 +19,13 @@ const InitialState = {
 const auth = (state = InitialState, action) => {
     const {type, payload} = action
     switch (type) {
+        case GETALL_USER:
+            return {
+                ...state,
+                isAuthenticated: true,
+                loading: false,
+                users: payload
+            }
         case USER_LOADED: 
         // console.log(action)
              return {
