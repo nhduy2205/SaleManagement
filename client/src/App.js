@@ -4,9 +4,12 @@ import { Provider } from 'react-redux';
 import Login from './pages/Login/Login';
 
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
-import User from './pages/User/User';
+
 import Navbar from './components/Navbar/Navbar';
 import PrivateRoute from './components/routing/PrivateRoute';
+import setAuthToken from './utils/setAuthToken'
+import {loadUser} from './actions/auth'
+import Admin from './pages/Admin/Admin';
 const App = () => {
   useEffect(() => {
     if (localStorage.token) {
@@ -15,10 +18,15 @@ const App = () => {
     }
   }, []);
   return (
-    <div>
-      <Admin />
-      <Login />
-    </div>
+    <Provider store={store}>
+        <Router>
+            <Navbar></Navbar>
+            <Switch>
+                <Route path="/" exact component={Login}></Route>
+                <PrivateRoute path="/admin" exact component={Admin}></PrivateRoute>
+            </Switch>
+        </Router>
+    </Provider>
   );
 };
 

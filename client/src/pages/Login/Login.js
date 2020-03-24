@@ -29,7 +29,7 @@ const Login = ({login, isAuthenticated}) => {
     else if(decoded.user.role === "user") return <Redirect to = "/user" exact />
   }
   return (
-    <Fragment>
+    <div className="bg-img">
       <h1 className='title'>SALE MANAGEMENT</h1>
       <form className='login' >
         <span className='login-title'>LOGIN</span>
@@ -57,7 +57,7 @@ const Login = ({login, isAuthenticated}) => {
         </div>
         <input type='submit' className='btn login-button' value='Sign in' onClick={e => onSubmit(e)}/>
       </form>
-    </Fragment>
+    </div>
   );
 }
 const mapStateToProps = state => {

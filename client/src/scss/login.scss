@@ -1,8 +1,9 @@
 @import 'color';
 @import 'reset';
 
-body {
+.bg-img {
   background-color: $primary-color;
+  height: 100vh;
   color: white;
   height: 100%;
   line-height: 1.5;
