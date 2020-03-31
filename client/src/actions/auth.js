@@ -9,7 +9,8 @@ import {
     LOGIN_FAIL,
     LOGOUT,
     GETALL_USER,
-    USER_ERROR
+    USER_ERROR,
+    DELETE_USER
     
 } from './types'
 import setAuthToken from '../utils/setAuthToken'
@@ -85,5 +86,21 @@ export const getAllUser = () => async dispatch => {
       type: USER_ERROR,
       payload: error.data
   })
+  }
+}
+
+//deleteUser 
+
+export const deleteUser = (id) => async dispatch => {
+  if (window.confirm('Are you sure? This can NOT be undone!')) {
+      try {
+          await axios.delete(`/api/users/${id}`);
+          dispatch({
+              type: DELETE_USER,
+              payload: id
+          })
+      } catch (error) {
+          console.error(error)
+      }
   }
 }

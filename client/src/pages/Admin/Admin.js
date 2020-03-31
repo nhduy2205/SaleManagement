@@ -5,7 +5,8 @@ import { connect } from 'react-redux';
 import Spinner from './../../components/Spinner/Spinner';
 import PlanItem from './PlanItem';
 import {getAllUser} from './../../actions/auth'
-import { Redirect } from 'react-router-dom';
+import { Redirect, Link } from 'react-router-dom';
+
 const Admin = ({getAllUser,  auth: { loading, users} }) => {
   useEffect(() => {
     getAllUser()
@@ -20,19 +21,24 @@ const Admin = ({getAllUser,  auth: { loading, users} }) => {
   ) : (
     <Fragment>
       <section className='admin'>
+        <h2 className="admin__title">Planning</h2>
+        <div className="admin__menu">
+            <span><Link to="/admin" exact="true" style={{color: "black"}}>Admin</Link></span>
+            <i className="fa fa-chevron-right" ></i>
+            <span className="admin__menu-home">Planning</span>
+        </div>
         <div className='container'>
-          <div className='admin-title'>LẬP KẾ HOẠCH</div>
+          
           <div className='row'>
             <div className='col-12 col-lg-9 assign'>
               <table className='table'>
                 <thead className='thead-dark'>
                   <tr>
-                    <th scope='col'>STT</th>
-                    <th scope='col'>Mã NV</th>
-                    <th scope='col'>Họ tên</th>
-                    <th scope='col'>Ngày sinh</th>
-                    <th scope='col'>Địa bàn</th>
-                    <th scope='col'>Lập kế hoạch</th>
+                    <th scope='col'>#</th>                    
+                    <th scope='col'>Full name</th>
+                    <th scope='col'>Email</th>
+                    <th scope='col'>Locality</th>
+                    <th scope='col'>Action</th>
                   </tr>
                 </thead>
                 <tbody>
@@ -46,11 +52,11 @@ const Admin = ({getAllUser,  auth: { loading, users} }) => {
             </div>
             <div className='col-12 col-lg-3 numeral'>
               <div className='card' style={{ width: '18rem' }}>
-                <div className='card-header'>Chỉ số</div>
+                <div className='card-header'>Index</div>
                 <table>
                   <tbody>
                     <tr>
-                      <th>Hoàn thành</th>
+                      <th>Complete</th>
                       <td>90%</td>
                     </tr>
                   </tbody>

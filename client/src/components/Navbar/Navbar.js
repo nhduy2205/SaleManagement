@@ -6,6 +6,43 @@ import jwtDecode from 'jwt-decode';
 import { Link } from 'react-router-dom';
 
 const Navbar = ({ auth: { isAuthenticated }, logout }) => {
+    function getVNTime(){
+      var time = new Date();
+      var dow = time.getDay();
+      if(dow===0)
+          dow = "Sunday";
+      else if (dow===1)
+          dow = "Monday";
+      else if (dow===2)
+          dow = "Tuesday";
+      else if (dow===3)
+          dow = "Wednesday";
+      else if (dow===4)
+          dow = "Thursday";
+      else if (dow===5)
+          dow = "Friday";
+      else if (dow===6)
+          dow = "Saturday";  
+      var day = time.getDate();
+      var month = time.getMonth()+1;
+      var year = time.getFullYear();
+      var hr = time.getHours();
+      var min = time.getMinutes();
+      var sec = time.getSeconds();
+      day = ((day < 10) ? "0" : "") + day;
+      month = ((month < 10) ? "0" : "") + month;
+      hr = ((hr < 10) ? "0" : "") + hr;
+      min = ((min < 10) ? "0" : "") + min;
+      sec = ((sec < 10) ? "0" : "") + sec;
+      return dow + " " + month + "/" + day + "/" + year + " " + hr + ":" + min + ":" + sec;
+  }
+  function showTime(){
+      var vnclock = document.getElementById("vnclock");
+      if (vnclock != null)
+          vnclock.innerHTML = getVNTime();
+      setTimeout(showTime, 1000);
+  }
+  showTime()
   const showLink = () => {
     if (isAuthenticated === null) {
       return '';
@@ -16,10 +53,14 @@ const Navbar = ({ auth: { isAuthenticated }, logout }) => {
         return (
           <Fragment>
             <section className='header'>
+              
               <div className='header-info'>
+                <div className="header-datenow" id="vnclock">
+                    {/* {time()} */}
+                </div>
                 <i className='fa fa-user' />
                 Admin
-                <a href='/' onClick={logout} className='login-btn ml-3'>
+                <a href='/' onClick={logout} className='logout-btn ml-3'>
                   <i className='fa fa-sign-out'></i> Logout
                 </a>
               </div>
@@ -47,19 +88,19 @@ const Navbar = ({ auth: { isAuthenticated }, logout }) => {
                     className='nav-item nav-link active header-item'
                     exact='true'
                   >
-                    Lập kế hoạch<span className='sr-only'>(current)</span>
+                    Planning<span className='sr-only'>(current)</span>
                   </Link>
                   <Link to="/warehouse" className='nav-item nav-link header-item' >
-                    Kho hàng
+                    Warehouse
                   </Link>
                   <Link
                     to='/addproduct'
                     className='nav-item nav-link header-item'
                   >
-                    Nhập hàng
+                    Import goods
                   </Link>
                   <a className='nav-item nav-link header-item' href='#/'>
-                    Nhân viên
+                    Staff
                   </a>
                 </div>
               </div>

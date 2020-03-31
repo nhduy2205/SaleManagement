@@ -1,3 +1,4 @@
+@import url('https://fonts.googleapis.com/css?family=Liu+Jian+Mao+Cao&display=swap&subset=chinese-simplified');
 @import 'color';
 @import 'reset';
 
@@ -25,21 +26,26 @@
 .title {
   padding: 2rem;
   color: $secondary-color;
+  font-family: 'Spicy Rice', cursive;
 }
 
 .login {
   font-size: 1.5rem;
   padding: 1.5rem;
   letter-spacing: 5px;
-  width: 50%;
+  width: 40%;
   margin: 0 auto;
   &-title {
     color: $secondary-color;
     padding: 1.5rem;
-    font-size: 2rem;
+    font: {
+      size: 2rem;
+      family: 'Spicy Rice', cursive;
+    }
   }
   &-input {
     margin: 2rem;
+    font-family: 'Cabin', sans-serif;
     .login-icon {
       width: 50px;
       font-size: 1.5rem;
@@ -52,9 +58,14 @@
     border-radius: 15px;
     background-color: $secondary-color;
     color: $primary-color;
-    font-size: 1rem;
+    font: {
+      size: 1rem;
+      family: 'Cabin', sans-serif;
+      weight: 600;
+    }
     letter-spacing: 3px;
     transition: 0.5s;
+    
     &:hover {
       width: 45%;
     }
@@ -65,6 +76,7 @@
 
 @media screen and (max-width: 768px) {
   .login {
-    width: 90%;
+    width: 100%;
+    padding: 0;
   }
 }

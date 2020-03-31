@@ -1,17 +1,31 @@
+@import 'font';
 @import 'color';
 @import 'reset';
 
 .header {
+  display: flex;
   width: 100%;
   &-info {
+    font-family: 'Spicy Rice', cursive;
     text-align: right;
     width: 100%;
     padding: 0.2rem 2rem;
     background-color: $primary-color;
     color: $secondary-color;
     border-bottom: rgba($color: gray, $alpha: 0.8) solid 1px;
+    .header-datenow{
+      position: absolute;
+      left: 1rem;
+      color: $myWhite;
+      font-family: 'Spicy Rice', cursive;
+      
+    }
     i {
       padding-right: 0.5rem;
+    }
+    .logout-btn{
+      color: white;
+      font-family: 'Spicy Rice', cursive;
     }
   }
 }
@@ -24,14 +38,21 @@
   .header-logo {
     margin-right: 2rem;
     color: $secondary-color;
-    font-weight: bold;
+    font : {
+      weight: 900;
+      family: 'Cabin', sans-serif;
+
+    }
     letter-spacing: 3px;
     text-shadow: 2px 2px 4px rgba($color: white, $alpha: 0.5);
   }
   .header-item {
     padding: 0 2rem;
     color: white !important;
-    font-weight: bold;
+    font: {
+      weight: bold;
+      family: 'Cabin', sans-serif;;
+    }
     letter-spacing: 1px;
     transition: 0.3s;
     &:hover {
@@ -40,7 +61,39 @@
   }
 }
 
+//admin page planning
 .admin {
+  
+  &__title{
+    text-align: center;
+    font-size: 3.8rem;
+    font-weight: 500;
+    color:#19191a;
+    font-family: 'Lora', serif;
+    // margin-top: 1rem;
+  }
+  &__menu{
+      text-align: center;
+      // margin-top: 1.8rem;
+      margin-bottom: 2rem;
+      font: {
+          family: 'Lora', serif;
+          size: 1.8rem;
+      }
+      span:nth-child(1){
+          margin-right: 1rem;
+      }
+      i{
+          font-size: 1.5rem;
+          color: #aaaab3;
+      }
+      &-home{
+          margin-left: 1rem;
+          color: #aaaab3;
+      }
+    
+    
+}
   line-height: 1.5;
   padding: 2rem 0;
   &-title {
@@ -57,6 +110,19 @@
   .numeral {
     padding: 1rem 0.5rem;
   }
+  .tr-0{
+    font: {
+      size: 2.5rem;
+      family: Cabin, sans-serif;
+    }
+    
+    color: $myDark;
+  }
+  .admin-action{
+    color: $secondary-color;
+
+  }
+
 }
 
 // scss add product

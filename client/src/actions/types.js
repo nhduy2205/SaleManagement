@@ -9,5 +9,7 @@ export const AUTH_ERROR = 'AUTH_ERROR';
 export const LOGIN_SUCCESS = 'LOGIN_SUCCESS';
 export const LOGIN_FAIL = 'LOGIN_FAIL';
 export const LOGOUT = 'LOGOUT';
+export const DELETE_USER = 'DELETE_USER'
 export const ADD_PRODUCT = 'ADD_PRODUCT';
 export const GETALL_PRODUCT = 'GETALL_PRODUCT'
+export const DELETE_PRODUCT = 'DELETE_PRODUCT'

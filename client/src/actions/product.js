@@ -2,9 +2,10 @@ import axios from 'axios';
 import {setAlert } from './alert'
 import {
     ADD_PRODUCT,
-    GETALL_PRODUCT
+    GETALL_PRODUCT,
+    DELETE_PRODUCT
 } from './types'
-
+// Thêm mới sản phẩm vào kho hàng
 export const addProduct = (formData) => async dispatch => {
     const config = {
         headers: {
@@ -28,7 +29,7 @@ export const addProduct = (formData) => async dispatch => {
         }
     }    
 }
-
+//lấy toàn bộ danh sách hàng hóa
 export const getAllProduct = () => async dispatch => {
     try {
         const res = await axios.get('/api/products');
@@ -38,5 +39,20 @@ export const getAllProduct = () => async dispatch => {
         })
     } catch (error) {
         console.error(error)
+    }
+}
+
+//Xóa 1 sản phẩm theo id
+export const deleteProduct = (id) => async dispatch => {
+    if (window.confirm('Are you sure? This can NOT be undone!')) {
+        try {
+            await axios.delete(`/api/products/${id}`);
+            dispatch({
+                type: DELETE_PRODUCT,
+                payload: id
+            })
+        } catch (error) {
+            console.error(error)
+        }
     }
 }
