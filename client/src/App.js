@@ -11,6 +11,7 @@ import setAuthToken from './utils/setAuthToken';
 import { loadUser } from './actions/auth';
 import AddProduct from './pages/AddProduct/AddProduct';
 import WareHouse from './pages/WareHouse/WareHouse';
+import PlanningDetails from './pages/PlanningDetails/PlanningDetails';
 const App = () => {
   useEffect(() => {
     if (localStorage.token) {
@@ -32,6 +33,7 @@ const App = () => {
           ></PrivateRoute>
           <PrivateRoute path='/plan' exact component={Admin}></PrivateRoute>
           <PrivateRoute path='/warehouse' exact component={WareHouse}></PrivateRoute>
+          <PrivateRoute path='/plandetails/:id' exact component={PlanningDetails}></PrivateRoute>
         </Switch>
       </Router>
     </Provider>

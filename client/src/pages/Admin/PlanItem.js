@@ -13,13 +13,13 @@ const PlanItem = ({user, index, deleteUser}) => {
                 <td>{user.email}</td>
                 <td>Can Tho</td>
                 <td>
-                    <Link to={`/plandetails/${user._id}`} ><a href='#/' className="admin-action">
+                    <Link to={`/plandetails/${user._id}`}   className="admin-action">
                         <i className='fa fa-pencil' aria-hidden='true' />
                         
                             Assigned
-                    </a></Link>
+                    </Link>
                     <a href='#/' className="admin-action ml-3" style={{color: "red"}} onClick={() => deleteUser(user._id)}>
-                        <i class="fa fa-window-close" aria-hidden="true"></i>
+                        <i className="fa fa-window-close" aria-hidden="true"></i>
                         
                             Delete
                     </a>

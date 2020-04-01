@@ -20,7 +20,8 @@ const ProductItem = ({product, index, deleteProduct}) => {
 
 ProductItem.propTypes = {
     product: PropTypes.object.isRequired,
-    deleteProduct: PropTypes.func.isRequired
+    deleteProduct: PropTypes.func.isRequired,
+    
 }
 
 export default connect( null,{deleteProduct})(ProductItem)

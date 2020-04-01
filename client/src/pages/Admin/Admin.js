@@ -16,6 +16,7 @@ const Admin = ({getAllUser,  auth: { loading, users} }) => {
   if(!token){
     return <Redirect to="/" exact />
   }
+  
   return loading && users === [] ? (
     <Spinner />
   ) : (
@@ -47,6 +48,13 @@ const Admin = ({getAllUser,  auth: { loading, users} }) => {
                       return <PlanItem key={index} user={val} index={index}/>
                     })
                   }
+                  <tr>
+                    <th>Total</th>
+                    <th>{users.length - 1}</th>
+                    <th></th>
+                    <th></th>
+
+                  </tr>
                 </tbody>
               </table>
             </div>
