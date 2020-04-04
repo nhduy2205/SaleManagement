@@ -1,5 +1,4 @@
 import React, { Fragment, useEffect } from 'react';
-import PlanningItem from './PlanningItem';
 import PropTypes from 'prop-types';
 import Spinner from './../../components/Spinner/Spinner';
 import { connect } from 'react-redux';
@@ -13,6 +12,11 @@ const PlanningDetails = ({
   useEffect(() => {
     getAllProduct();
   }, [getAllProduct]);
+
+  const submit = () => {
+    planning('5e7826e03bc26551f82d7731', tuihang);
+    console.log(tuihang);
+  };
 
   return loading ? (
     <Spinner />
@@ -44,9 +48,11 @@ const PlanningDetails = ({
           <tbody>
             {products.map((val, index) => {
               const item = new Object();
-              item.name = val.name;
+              item.product = val.name;
+              const onChange = (e) => {
+                item.quantity = e.target.value;
+              };
               item.price = val.price;
-              item.quantity = document.getElementsByName('soluong').value;
               return (
                 <tr>
                   <th scope='row'>{index + 1}</th>
@@ -57,12 +63,19 @@ const PlanningDetails = ({
                   <td>{val.price} $</td>
                   <td>{val.manufacturer}</td>
                   <td>
-                    <input type='text' name='soluong' id='soluong' />
+                    <input
+                      type='text'
+                      name='soluong'
+                      value={item.quantity}
+                      onChange={(e) => onChange(e)}
+                    />
                   </td>
                   <td>
                     <button
                       className='btn btn-warning'
-                      onClick={(e) => addItem(item)}
+                      onClick={(e) => {
+                        addItem(item);
+                      }}
                     >
                       Confirm
                     </button>
@@ -71,17 +84,16 @@ const PlanningDetails = ({
               );
             })}
           </tbody>
-          <tr>
-            <button className='btn btn-success' onClick={(e) => planning(e)}>
-              Complete
-            </button>
-          </tr>
+          <button className='btn btn-success' onClick={() => submit()}>
+            Complete
+          </button>
         </table>
       </Fragment>
     </section>
   );
 };
-const tuihang = [];
+
+var tuihang = [];
 const addItem = (e) => {
   tuihang.push(e);
   console.log(tuihang);

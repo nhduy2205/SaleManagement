@@ -60,9 +60,20 @@ export const deleteProduct = (id) => async (dispatch) => {
 
 // Phân công
 
-export const planning = () => async (dispatch) => {
-  dispatch({
-    type: PLANNING_SUCCESS,
-  });
-  dispatch(setAlert('Add product successfully', 'success'));
+export const planning = (id, product_list) => async (dispatch) => {
+  const config = {
+    headers: {
+      'Content-Type': 'application/json',
+    },
+  };
+  const body = JSON.stringify(product_list);
+  try {
+    const res = await axios.post(`/api/plans/${id}`, body, config);
+    dispatch({
+      type: PLANNING_SUCCESS,
+    });
+    dispatch(setAlert('Add product successfully', 'success'));
+  } catch (error) {
+    console.error(error);
+  }
 };
