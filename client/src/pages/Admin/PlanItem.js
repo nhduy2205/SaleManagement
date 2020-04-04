@@ -2,6 +2,9 @@ import React, { Fragment } from 'react';
 import PropTypes from 'prop-types';
 
 const PlanItem = ({ user, index }) => {
+  const plan = new Object();
+  plan.name = user.name;
+  plan.email = user.email;
   return (
     <Fragment>
       <tr>
@@ -11,7 +14,7 @@ const PlanItem = ({ user, index }) => {
         <td>{user.email}</td>
         <td>Phong Dien - Can Tho</td>
         <td>
-          <button onClick={(e) => onClick(user.name)} value=' Phân công'>
+          <button onClick={(e) => onClick(plan)} value=' Phân công'>
             <i className='fa fa-pencil' aria-hidden='true' />
           </button>
         </td>

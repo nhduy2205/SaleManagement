@@ -1,5 +1,5 @@
 import {
-    ADD_PRODUCT, GETALL_PRODUCT
+    ADD_PRODUCT, GETALL_PRODUCT, DELETE_PRODUCT
 } from './../actions/types'
 
 const InitialState = {
@@ -24,6 +24,14 @@ const product = (state = InitialState, action) => {
                 loading: false
 
             }
+        case DELETE_PRODUCT:
+            return {
+                ...state,
+                products: state.products.filter(val => val._id !== payload),
+                loading: false
+                
+
+            }    
         default:
             return state
     }

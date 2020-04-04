@@ -6,7 +6,8 @@ import {
     LOGIN_FAIL,
     LOGOUT,
     
-    GETALL_USER
+    GETALL_USER,
+    DELETE_USER
 } from './../actions/types';
 const InitialState = {
     token: localStorage.getItem('token'),
@@ -52,7 +53,11 @@ const auth = (state = InitialState, action) => {
                 isAuthenticated: true,
                 loading: false
             } 
-        // case REGISTER_FAIL:
+        case DELETE_USER: 
+            return {
+                ...state,
+                users: state.users.filter(val => val._id !== payload),
+            }
         case LOGIN_FAIL:    
         case LOGOUT:
             // console.log(action)

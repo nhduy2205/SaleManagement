@@ -33,6 +33,7 @@ const WareHouse = ({ getAllProduct, product: { loading, products } }) => {
     </Fragment>
   );
 };
+
 const mapStateToProps = (state) => {
   return {
     product: state.product,

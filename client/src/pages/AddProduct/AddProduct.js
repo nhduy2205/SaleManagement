@@ -5,6 +5,7 @@ import './../../scss/admin.scss';
 import {connect} from 'react-redux'
 import {addProduct} from './../../actions/product'
 import Alert from './../../components/Alert/Alert'
+import {Link} from 'react-router-dom'
 const AddProduct = ({addProduct}) => {
   const [formData, setFormData] = useState({
     name: '',
@@ -23,6 +24,12 @@ const AddProduct = ({addProduct}) => {
   }
   return (
     <section className='admin'>
+      <h2 className="admin__title">Add Product</h2>
+      <div className="admin__menu">
+          <span><Link to="/admin" exact="true" style={{color: "black"}}>Admin</Link></span>
+          <i className="fa fa-chevron-right" ></i>
+          <span className="admin__menu-home">Add Product</span>
+      </div>
       <div className='container'>
         <div className='admin-title'>THÊM SẢN PHẨM</div>        
         <form className='addproduct' onSubmit={e=> onSubmit(e)}>
@@ -32,13 +39,13 @@ const AddProduct = ({addProduct}) => {
                 <div className='input-group mb-3'>
                   <div className='input-group-prepend'>
                     <span className='input-group-text input-item'>
-                      Tên sản phẩm
+                      Name
                     </span>
                   </div>
                   <input name='name' value={name} onChange={e=> onChange(e)}
                   type='text'
                   className='form-control'
-                  placeholder='Tên sản phẩm'
+                  placeholder="Product's name"
                   />
                 </div>
               </div>
@@ -48,12 +55,12 @@ const AddProduct = ({addProduct}) => {
                 <div className='input-group mb-3'>
                   <div className='input-group-prepend'>
                     <span className='input-group-text input-item'>
-                      Giá sản phẩm
+                      Price ($)
                     </span>
                   </div>
                   <input name='price' value={price} type='text' onChange={e=> onChange(e)}
                   className='form-control'
-                  placeholder='Giá sản phẩm'
+                  placeholder="Product's price"
                   />
                 </div>
               </div>
@@ -63,12 +70,12 @@ const AddProduct = ({addProduct}) => {
                 <div className='input-group mb-3'>
                   <div className='input-group-prepend'>
                     <span className='input-group-text input-item'>
-                      Số lượng
+                      Quantity
                     </span>
                   </div>
-                  <input name='quantity' type='number' value={quantity} min="0" max="100" onChange={e=> onChange(e)}
+                  <input name='quantity' type='number' value={quantity} min="0" max="1000" onChange={e=> onChange(e)}
                   className='form-control'
-                  placeholder='Số lượng'
+                  placeholder="Product's quantity"
                   />
                 </div>
               </div>
@@ -78,13 +85,13 @@ const AddProduct = ({addProduct}) => {
                 <div className='input-group mb-3'>
                   <div className='input-group-prepend'>
                     <span className='input-group-text input-item'>
-                      Nhà sản xuất
+                      Manufacturer
                     </span>
                   </div>
                   <input name='manufacturer' value={manufacturer} onChange={e=> onChange(e)}
                   type='text'
                   className='form-control'
-                  placeholder='Nhà sản xuất'
+                  placeholder="Product's manufacturer"
                   />
                 </div>
               </div>
@@ -103,7 +110,7 @@ const AddProduct = ({addProduct}) => {
             </div>
             <div className='col-12 col-lg-4'>
               <div className='form-group'>
-                <input name='them' type='submit' className='btn btn-addproduct' value='Thêm vào kho' />
+                <input name='them' type='submit' className='btn btn-addproduct' value='Add to warehouse' />
               </div>
             </div>
           </div>
