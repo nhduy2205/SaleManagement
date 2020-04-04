@@ -11,7 +11,7 @@ const User = require('./../../models/User')
 // @access  Private
 //Thêm mới kế hoạch
 router.post('/:id', auth, admin, async (req, res) => {
-    const { product_list, date_now } = req.body 
+    // const { product_list, date_now } = req.body 
 
     try {
         const dateNow = new Date()
@@ -30,8 +30,8 @@ router.post('/:id', auth, admin, async (req, res) => {
         
         var newPlan = new Plan({
             user: user,
-            product_list: product_list,
-            date: date_now
+            product_list: req.body,
+            
                   
         })
         await newPlan.save()

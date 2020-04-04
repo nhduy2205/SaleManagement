@@ -10,7 +10,7 @@ const PlanSchema = new mongoose.Schema({
             product: {
                 type: String
             },
-            qty: {
+            quantity: {
                 type: Number
             },
             price: {

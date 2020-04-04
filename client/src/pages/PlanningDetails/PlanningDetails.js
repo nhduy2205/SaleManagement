@@ -8,13 +8,15 @@ const PlanningDetails = ({
   getAllProduct,
   planning,
   product: { loading, products },
+  match
 }) => {
   useEffect(() => {
     getAllProduct();
   }, [getAllProduct]);
 
-  const submit = () => {
-    planning('5e7826e03bc26551f82d7731', tuihang);
+  const submit = e => {
+    e.preventDefault()
+    planning(match.params.id, tuihang);
     console.log(tuihang);
   };
 
@@ -47,14 +49,14 @@ const PlanningDetails = ({
           </thead>
           <tbody>
             {products.map((val, index) => {
-              const item = new Object();
+              const item = {};
               item.product = val.name;
               const onChange = (e) => {
                 item.quantity = e.target.value;
               };
               item.price = val.price;
               return (
-                <tr>
+                <tr key={index}>
                   <th scope='row'>{index + 1}</th>
                   <td>
                     <b>{val.name.toUpperCase()}</b>
@@ -84,10 +86,11 @@ const PlanningDetails = ({
               );
             })}
           </tbody>
-          <button className='btn btn-success' onClick={() => submit()}>
+          
+        </table>
+        <button className='btn btn-success' onClick={e => submit(e)}>
             Complete
           </button>
-        </table>
       </Fragment>
     </section>
   );

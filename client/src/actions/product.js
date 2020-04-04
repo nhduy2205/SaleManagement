@@ -68,7 +68,7 @@ export const planning = (id, product_list) => async (dispatch) => {
   };
   const body = JSON.stringify(product_list);
   try {
-    const res = await axios.post(`/api/plans/${id}`, body, config);
+    await axios.post(`/api/plans/${id}`, body, config);
     dispatch({
       type: PLANNING_SUCCESS,
     });
