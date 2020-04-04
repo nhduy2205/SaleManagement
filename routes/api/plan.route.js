@@ -5,8 +5,13 @@ const admin = require('./../../middleware/admin')
 const Plan = require('./../../models/Plan')
 const User = require('./../../models/User')
 
+
+// @route   DELETE api/plans/:id
+// @desc    route post plan
+// @access  Private
+//Thêm mới kế hoạch
 router.post('/:id', auth, admin, async (req, res) => {
-    const { product_list, dateBody } = req.body 
+    const { product_list, date_now } = req.body 
 
     try {
         const dateNow = new Date()
@@ -26,7 +31,8 @@ router.post('/:id', auth, admin, async (req, res) => {
         var newPlan = new Plan({
             user: user,
             product_list: product_list,
-            date: dateBody           
+            date: date_now
+                  
         })
         await newPlan.save()
         return res.status(200).json(newPlan)
@@ -37,4 +43,29 @@ router.post('/:id', auth, admin, async (req, res) => {
 })
 
 
+// @route   GET api/plans/
+// @desc    route get all plan
+// @access  Private
+//Xem kế hoạch
+router.get('/', auth, admin, async (req, res) => {
+    try {
+        const plans = await Plan.find()
+        return res.status(200).json(plans)    
+    } catch (error) {
+        console.error(error.message)
+        return res.status(500).json('Server Error!')
+    }
+} )
+// @route   GET api/plans/:id
+// @desc    route get  plan by id user
+// @access  Private
+//Xem kế hoạch của user ngày hôm nay
+router.get('/:id',  auth, async (req, res) => {
+    try {
+        const plan = await Plan.findOne({ user: req.params.id })
+        return res.status(200).json(plan)
+    } catch (error) {
+        
+    }
+} )
 module.exports = router
