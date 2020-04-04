@@ -5,7 +5,7 @@ const PlanSchema = new mongoose.Schema({
         type: mongoose.Schema.Types.ObjectId,
         ref: 'users'
     },
-    plan: [
+    product_list: [
         {
             product: {
                 type: String
