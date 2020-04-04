@@ -24,4 +24,5 @@ ProductItem.propTypes = {
     
 }
 
+
 export default connect( null,{deleteProduct})(ProductItem)
