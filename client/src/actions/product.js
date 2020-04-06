@@ -72,8 +72,11 @@ export const planning = (id, product_list) => async (dispatch) => {
     dispatch({
       type: PLANNING_SUCCESS,
     });
-    dispatch(setAlert('Add product successfully', 'success'));
+    dispatch(setAlert('Add plans for employees today succeed !', 'success'));
   } catch (error) {
-    console.error(error);
+    const errors = error.response.data.errors
+        if(errors){
+            errors.forEach(error => dispatch(setAlert(error.msg, 'danger')));
+        }
   }
 };
