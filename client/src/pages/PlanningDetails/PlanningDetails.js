@@ -10,6 +10,7 @@ const PlanningDetails = ({
   planning,
   product: { loading, products },
   match,
+  auth: { users }
 }) => {
   useEffect(() => {
     getAllProduct();
@@ -101,9 +102,18 @@ const PlanningDetails = ({
             })}
           </tbody>
         </table>
-        <button className='btn btn-success' onClick={(e) => submit(e)}>
-          Complete
-        </button>
+        <div className="container d-flex justify-content-center">
+          <Link to="/admin"><button className='btn btn-secondary px-4 mr-3'>Back</button></Link>
+          <button className='btn btn-success' onClick={e => submit(e)}>
+              Complete
+          </button>
+          
+          
+        </div>
+        <div className="container w-50 ">
+          <Alert/>
+        </div>
+        
       </Fragment>
     </section>
   );

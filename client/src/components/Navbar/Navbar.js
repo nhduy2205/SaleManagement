@@ -6,6 +6,7 @@ import jwtDecode from 'jwt-decode';
 import { Link } from 'react-router-dom';
 
 const Navbar = ({ auth: { isAuthenticated }, logout }) => {
+
   function getVNTime() {
     var time = new Date();
     var dow = time.getDay();
@@ -53,7 +54,7 @@ const Navbar = ({ auth: { isAuthenticated }, logout }) => {
     if (isAuthenticated === null) {
       return '';
     } else if (isAuthenticated) {
-      const decoded = jwtDecode(localStorage.getItem('token'));
+      var decoded = jwtDecode(localStorage.getItem('token'));
       //   console.log(decoded);
       if (decoded.user.role === 'admin') {
         return (
@@ -171,14 +172,11 @@ const Navbar = ({ auth: { isAuthenticated }, logout }) => {
   };
   return <Fragment>{showLink()}</Fragment>;
 };
-const mapStateToProps = (state) => {
-  return {
-    auth: state.auth,
-  };
-};
+const mapStateToProps = (state) => ({
+  auth: state.auth,
+});
 Navbar.propTypes = {
   auth: PropTypes.object.isRequired,
-  
 };
 
-export default connect(mapStateToProps, { logout })(Navbar);
+export default connect(mapStateToProps, { logout})(Navbar);

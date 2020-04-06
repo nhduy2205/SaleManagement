@@ -8,7 +8,6 @@ const Mission = ({ id_user, getUserMission, auth: { mission } }) => {
   useEffect(() => {
     getUserMission(id_user);
   }, []);
-
   console.log(mission);
   return (
     <section className='admin'>
@@ -22,21 +21,7 @@ const Mission = ({ id_user, getUserMission, auth: { mission } }) => {
         <i className='fa fa-chevron-right'></i>
         <span className='admin__menu-home'>Mission of the day</span>
       </div>
-      <Fragment>
-        { mission.product_list.forEach((e) => {
-            return (
-              <tr key={1}>
-                <th scope='row'>{1}</th>
-                <td>
-                  <b>{e.product.toUpperCase()}</b>
-                </td>
-                <td>{e.quantity}</td>
-                <td>{e.price} $</td>
-              </tr>
-            );
-          })};
-        )}
-      </Fragment>
+      <Fragment></Fragment>
     </section>
   );
 };
