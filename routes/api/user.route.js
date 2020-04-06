@@ -35,8 +35,8 @@ router.get('/', auth, admin, async (req, res) => {
 router.post(
   '/',
   [
-    auth,
-    admin,
+    // auth,
+    // admin,
     check('name', 'Name is required')
       .not()
       .isEmpty(),

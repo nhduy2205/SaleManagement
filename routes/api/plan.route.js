@@ -25,7 +25,7 @@ router.post('/:id', auth, admin, async (req, res) => {
             && existPlan.date.getMonth() === month
             && existPlan.date.getFullYear() === year
             ){
-            return res.status(400).json({msg: 'Plan is exist'})
+            return res.status(400).json({ errors: [{ msg: 'Plan\'s user today is already exists' }] })
         }
         
         var newPlan = new Plan({
