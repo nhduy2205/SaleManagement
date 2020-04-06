@@ -87,16 +87,17 @@ router.get('/mission',  auth, async (req, res) => {
         const plan = await Plan.find({ user: req.user.id })
         const plantoday = plan.map(val => {
             if(moment(val.date).format('YYYY-MM-DD') === today){
-                console.log(moment(val.date).format('YYYY-MM-DD'))
+                // console.log(moment(val.date).format('YYYY-MM-DD'))
                 // console.log(today)
                 return val
             }
         })
-        var x = moment('2020-04-05T17:19:20.972Z').format('YYYY-MM-DD')
+        // var x = moment('2020-04-05T17:19:20.972Z').format('YYYY-MM-DD')
         // console.log(x)
         return res.status(200).json(plantoday[0])
     } catch (error) {
-        
+        console.error(error.message)
+        return res.status(500).json('Server Error!')
     }
 } )
 module.exports = router

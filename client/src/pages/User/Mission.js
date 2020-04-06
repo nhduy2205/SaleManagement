@@ -11,7 +11,7 @@ const Mission = ({  getUserMission, mission: { mission, loading } }) => {
   }, [getUserMission])
 
   console.log(mission)
-  return loading ? (<Spinner/>) : 
+  return loading && mission === null ? (<Spinner/>) : 
     (
     <section className='admin'>
       <h2 className='admin__title'>Mission of the day</h2>
@@ -26,12 +26,13 @@ const Mission = ({  getUserMission, mission: { mission, loading } }) => {
       </div>
       <Fragment>
         <table>
+          <tbody>
         {
           
             mission.product_list.map( (e, index) => {
               return (
                 <tr key={index}>
-                  <th scope='row'>{1}</th>
+                  <th scope='row'>{index+1}</th>
                   <td>
                     <b>{e.product.toUpperCase()}</b>
                   </td>
@@ -43,6 +44,7 @@ const Mission = ({  getUserMission, mission: { mission, loading } }) => {
           
           
         }
+          </tbody>
         </table>
         {/* { mission.product_list.forEach((e) => {
             return (

@@ -65,19 +65,20 @@ const PlanningDetails = ({
           <tbody>
             {products.map((val, index) => {
               const item = {};
+              item.id_product = val._id
               item.product = val.name;
               const onChange = (e) => {
                 item.quantity = e.target.value;
               };
-              item.price = val.price;
+              item.price = val.export_price;
               return (
                 <tr key={index}>
                   <th scope='row'>{index + 1}</th>
                   <td>
                     <b>{val.name.toUpperCase()}</b>
                   </td>
-                  <td>{val.quantity}</td>
-                  <td>{val.price} $</td>
+                  <td>{val.entry_quantity}</td>
+                  <td>{val.export_price} $</td>
                   <td>{val.manufacturer}</td>
                   <td>
                     <input

@@ -75,8 +75,10 @@ router.post('/',
             }
             const newProduct = new Product({
                 name: req.body.name,
-                price: req.body.price,
-                quantity: req.body.quantity,
+                entry_price: req.body.price,
+                export_price: req.body.price * 1.2,
+                entry_quantity: req.body.quantity,
+                quantity_remaining: req.body.quantity,
                 manufacturer: req.body.manufacturer
 
             })
@@ -92,53 +94,53 @@ router.post('/',
 // @desc    route put product
 // @access  Private
 //Sửa sản phẩm
-router.put('/:id', 
-    [
-        auth,
-        admin,  
-        [check('name', 'name is required')
-            .not()
-            .isEmpty(),
-        check('price', 'price is required')    
-            .not()
-            .isEmpty(),
-        check('quantity', 'quantity is required')    
-            .not()
-            .isEmpty(),
-        check('manufacturer', 'manufacturer is required')    
-            .not()
-            .isEmpty()  ]     
-    ],
-    async (req, res) => {
-        const errors = validationResult(req);
-        if(!errors.isEmpty()){
-            return res.status(400).json({ errors: errors.array() });
-        }    
-        const productField = {} 
-        productField.name = req.body.name   
-        productField.price = req.body.price  
-        productField.quantity = req.body.quantity  
-        productField.manufacturer = req.body.manufacturer 
-        try {
-            let product = await  Product.findById(req.params.id)
-            if(!product){
-                return res.status(404).json({ errors: [{ msg: 'Product not found' }] });
-            }
-            else{
-                product = await Product.findByIdAndUpdate(
-                    { _id: req.params.id },
-                    { $set: productField },
-                    { new: true }
-                )
-               res.json(product)
-            }
-            return res.status(200).json(product)
-        } catch (error) {
-            console.error(error.message);
-            res.status(500).send('Server Error');
-        } 
-    }
-)
+// router.put('/:id', 
+//     [
+//         auth,
+//         admin,  
+//         [check('name', 'name is required')
+//             .not()
+//             .isEmpty(),
+//         check('price', 'price is required')    
+//             .not()
+//             .isEmpty(),
+//         check('quantity', 'quantity is required')    
+//             .not()
+//             .isEmpty(),
+//         check('manufacturer', 'manufacturer is required')    
+//             .not()
+//             .isEmpty()  ]     
+//     ],
+//     async (req, res) => {
+//         const errors = validationResult(req);
+//         if(!errors.isEmpty()){
+//             return res.status(400).json({ errors: errors.array() });
+//         }    
+//         const productField = {} 
+//         productField.name = req.body.name   
+//         productField.price = req.body.price  
+//         productField.quantity = req.body.quantity  
+//         productField.manufacturer = req.body.manufacturer 
+//         try {
+//             let product = await  Product.findById(req.params.id)
+//             if(!product){
+//                 return res.status(404).json({ errors: [{ msg: 'Product not found' }] });
+//             }
+//             else{
+//                 product = await Product.findByIdAndUpdate(
+//                     { _id: req.params.id },
+//                     { $set: productField },
+//                     { new: true }
+//                 )
+//                res.json(product)
+//             }
+//             return res.status(200).json(product)
+//         } catch (error) {
+//             console.error(error.message);
+//             res.status(500).send('Server Error');
+//         } 
+//     }
+// )
 // @route   DELETE api/products/:id
 // @desc    route delete product
 // @access  Private
