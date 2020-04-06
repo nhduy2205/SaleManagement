@@ -10,8 +10,8 @@ import {
   LOGOUT,
   GETALL_USER,
   USER_ERROR,
-  DELETE_USER,
-  GET_USERMISSION,
+  DELETE_USER
+  
 } from './types';
 import setAuthToken from '../utils/setAuthToken';
 // import e from 'express';
@@ -104,16 +104,4 @@ export const deleteUser = (id) => async (dispatch) => {
   }
 };
 
-// get user mission
 
-export const getUserMission = (id) => async (dispatch) => {
-  try {
-    const res = await axios.get(`/api/plans/${id}`);
-    dispatch({
-      type: GET_USERMISSION,
-      payload: res.data,
-    });
-  } catch (error) {
-    console.error(error);
-  }
-};

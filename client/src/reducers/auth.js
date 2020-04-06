@@ -6,8 +6,8 @@ import {
   LOGIN_FAIL,
   LOGOUT,
   GETALL_USER,
-  DELETE_USER,
-  GET_USERMISSION,
+  DELETE_USER
+  
 } from './../actions/types';
 const InitialState = {
   token: localStorage.getItem('token'),
@@ -53,6 +53,7 @@ const auth = (state = InitialState, action) => {
         isAuthenticated: true,
         loading: false,
       };
+     
     case DELETE_USER:
       return {
         ...state,
@@ -68,11 +69,7 @@ const auth = (state = InitialState, action) => {
         isAuthenticated: false,
         loading: false,
       };
-    case GET_USERMISSION:
-      return {
-        ...state,
-        mission: payload,
-      };
+    
     default:
       return state;
   }

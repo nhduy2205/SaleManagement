@@ -80,11 +80,11 @@ router.get('/', auth, admin, async (req, res) => {
 // @desc    route get  plan by id user
 // @access  Private
 //Xem kế hoạch của user ngày hôm nay
-router.get('/:id',  auth, async (req, res) => {
+router.get('/mission',  auth, async (req, res) => {
     try {
         const dateNow = new Date()
         const today = moment(dateNow).format('YYYY-MM-DD')
-        const plan = await Plan.find({ user: req.params.id })
+        const plan = await Plan.find({ user: req.user.id })
         const plantoday = plan.map(val => {
             if(moment(val.date).format('YYYY-MM-DD') === today){
                 console.log(moment(val.date).format('YYYY-MM-DD'))
@@ -94,7 +94,7 @@ router.get('/:id',  auth, async (req, res) => {
         })
         var x = moment('2020-04-05T17:19:20.972Z').format('YYYY-MM-DD')
         // console.log(x)
-        return res.status(200).json(plantoday)
+        return res.status(200).json(plantoday[0])
     } catch (error) {
         
     }
