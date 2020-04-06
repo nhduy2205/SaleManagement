@@ -44,16 +44,16 @@ router.post('/:id', auth, admin, async (req, res) => {
         //     ){
         //     return res.status(400).json({ errors: [{ msg: 'Plan\'s user today is already exists' }] })
         // }
-        // else {
-        //     var newPlan = new Plan({
-        //         user: user,
-        //         product_list: req.body,
+        else {
+            var newPlan = new Plan({
+                user: user,
+                product_list: req.body,
                 
                       
-        //     })
-        //     await newPlan.save()
+            })
+            await newPlan.save()
             return res.status(200).json(count)
-        // }
+        }
         
         
     } catch (error) {
