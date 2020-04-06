@@ -20,13 +20,16 @@ router.post('/:id', auth, admin, async (req, res) => {
         var allplan = await Plan.find({user : req.params.id})
         const existplan = allplan.map(val => {
             if(moment(val.date).format('YYYY-MM-DD') === today){
+                console.log(moment(val.date).format('YYYY-MM-DD'))
+                console.log(today)
                 return val
             }
         })
         console.log(existplan)
         var count = 0;
         existplan.map(val => count++)
-        if(count !== 0){
+        // console.log(count)
+        if(count === 1 ){
             return res.status(400).json({ errors: [{ msg: 'Plan\'s user today is already exists' }] })
         }
         // const date = dateNow.getDate()
@@ -41,16 +44,16 @@ router.post('/:id', auth, admin, async (req, res) => {
         //     ){
         //     return res.status(400).json({ errors: [{ msg: 'Plan\'s user today is already exists' }] })
         // }
-        else {
-            var newPlan = new Plan({
-                user: user,
-                product_list: req.body,
+        // else {
+        //     var newPlan = new Plan({
+        //         user: user,
+        //         product_list: req.body,
                 
                       
-            })
-            await newPlan.save()
-            return res.status(200).json(newPlan)
-        }
+        //     })
+        //     await newPlan.save()
+            return res.status(200).json(count)
+        // }
         
         
     } catch (error) {
@@ -79,8 +82,19 @@ router.get('/', auth, admin, async (req, res) => {
 //Xem kế hoạch của user ngày hôm nay
 router.get('/:id',  auth, async (req, res) => {
     try {
-        const plan = await Plan.findOne({ user: req.params.id })
-        return res.status(200).json(plan)
+        const dateNow = new Date()
+        const today = moment(dateNow).format('YYYY-MM-DD')
+        const plan = await Plan.find({ user: req.params.id })
+        const plantoday = plan.map(val => {
+            if(moment(val.date).format('YYYY-MM-DD') === today){
+                console.log(moment(val.date).format('YYYY-MM-DD'))
+                // console.log(today)
+                return val
+            }
+        })
+        var x = moment('2020-04-05T17:19:20.972Z').format('YYYY-MM-DD')
+        // console.log(x)
+        return res.status(200).json(plantoday)
     } catch (error) {
         
     }
