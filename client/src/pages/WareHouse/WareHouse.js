@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import Spinner from './../../components/Spinner/Spinner';
 import { getAllProduct } from './../../actions/product';
-
+import {Link} from 'react-router-dom'
 const WareHouse = ({ getAllProduct, product: { loading, products } }) => {
   useEffect(() => {
     getAllProduct();
@@ -13,6 +13,14 @@ const WareHouse = ({ getAllProduct, product: { loading, products } }) => {
     <Spinner />
   ) : (
     <Fragment>
+      <section className='admin'>
+        <h2 className="admin__title">Warehouse</h2>
+        <div className="admin__menu">
+            <span><Link to="/admin" exact="true" style={{color: "black"}}>Admin</Link></span>
+            <i className="fa fa-chevron-right" ></i>
+            <span className="admin__menu-home">Warehouse</span>
+        </div>
+        
       <table className='table mt-5 container'>
         <thead className='thead-light'>
           <tr>
@@ -30,6 +38,7 @@ const WareHouse = ({ getAllProduct, product: { loading, products } }) => {
           })}
         </tbody>
       </table>
+      </section>
     </Fragment>
   );
 };

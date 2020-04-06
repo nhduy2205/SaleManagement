@@ -4,6 +4,7 @@ import Spinner from './../../components/Spinner/Spinner';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { getAllProduct, planning } from './../../actions/product';
+import Alert from './../../components/Alert/Alert'
 const PlanningDetails = ({
   getAllProduct,
   planning,
@@ -18,8 +19,16 @@ const PlanningDetails = ({
     e.preventDefault();
     planning(match.params.id, tuihang);
     console.log(tuihang);
+    tuihang= [];
   };
-
+  var staff = {};
+  users.map(val => {
+    if(val._id === match.params.id){
+      staff = val
+    }
+    return staff
+  })
+  
   return loading ? (
     <Spinner />
   ) : (
@@ -35,6 +44,10 @@ const PlanningDetails = ({
         <span className='admin__menu-home'>Plan Details</span>
       </div>
       <Fragment>
+        <div className="container">
+          <span className='admin__menu-home'>Staff's name: {staff.name} </span>
+        </div>
+        
         <table className='table mt-5 container'>
           <thead className='thead-light'>
             <tr>
@@ -70,6 +83,7 @@ const PlanningDetails = ({
                       name='soluong'
                       value={item.quantity}
                       onChange={(e) => onChange(e)}
+                      
                     />
                   </td>
                   <td>
@@ -105,10 +119,12 @@ PlanningDetails.propTypes = {
   getAllProduct: PropTypes.func.isRequired,
   planning: PropTypes.func.isRequired,
   product: PropTypes.object.isRequired,
+  auth: PropTypes.object.isRequired
 };
 
 const mapStateToProps = (state) => ({
   product: state.product,
+  auth: state.auth
 });
 
 export default connect(mapStateToProps, { getAllProduct, planning })(
