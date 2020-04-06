@@ -8,14 +8,14 @@ const PlanningDetails = ({
   getAllProduct,
   planning,
   product: { loading, products },
-  match
+  match,
 }) => {
   useEffect(() => {
     getAllProduct();
   }, [getAllProduct]);
 
-  const submit = e => {
-    e.preventDefault()
+  const submit = (e) => {
+    e.preventDefault();
     planning(match.params.id, tuihang);
     console.log(tuihang);
   };
@@ -86,11 +86,10 @@ const PlanningDetails = ({
               );
             })}
           </tbody>
-          
         </table>
-        <button className='btn btn-success' onClick={e => submit(e)}>
-            Complete
-          </button>
+        <button className='btn btn-success' onClick={(e) => submit(e)}>
+          Complete
+        </button>
       </Fragment>
     </section>
   );

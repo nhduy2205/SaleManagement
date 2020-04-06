@@ -1,4 +1,4 @@
-import React, {  useEffect } from 'react';
+import React, { useEffect } from 'react';
 import store from './store';
 import { Provider } from 'react-redux';
 import Login from './pages/Login/Login';
@@ -12,6 +12,7 @@ import { loadUser } from './actions/auth';
 import AddProduct from './pages/AddProduct/AddProduct';
 import WareHouse from './pages/WareHouse/WareHouse';
 import PlanningDetails from './pages/PlanningDetails/PlanningDetails';
+import Mission from './pages/User/Mission';
 const App = () => {
   useEffect(() => {
     if (localStorage.token) {
@@ -32,8 +33,21 @@ const App = () => {
             component={AddProduct}
           ></PrivateRoute>
           <PrivateRoute path='/plan' exact component={Admin}></PrivateRoute>
-          <PrivateRoute path='/warehouse' exact component={WareHouse}></PrivateRoute>
-          <PrivateRoute path='/plandetails/:id' exact component={PlanningDetails}></PrivateRoute>
+          <PrivateRoute
+            path='/warehouse'
+            exact
+            component={WareHouse}
+          ></PrivateRoute>
+          <PrivateRoute
+            path='/plandetails/:id'
+            exact
+            component={PlanningDetails}
+          ></PrivateRoute>
+          <PrivateRoute
+            path='/mission'
+            exact
+            component={Mission}
+          ></PrivateRoute>
         </Switch>
       </Router>
     </Provider>
