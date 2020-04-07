@@ -8,27 +8,8 @@ const Mission = ({ getUserMission, plan: { mission, loading } }) => {
   useEffect(() => {
     getUserMission();
   }, [getUserMission]);
-  const showMission = (e) => {
-    if (e != null) {
-    
-     return e.map((value, index) => {
-        console.log(value.product);
-        return (
-          <tr key={index}>
-            <th scope='row'>{index + 1}</th>
-            <td>
-              <b>{value.product.toUpperCase()}</b>
-            </td>
-            <td>{value.quantity}</td>
-            <td>{value.price} $</td>
-          </tr>
-        );
-        
-      });
-      
-      } else return <tr>Chưa được phân công</tr>;
-  };
-  console.log(mission);
+
+  // console.log(today.now());
 
   return loading && mission === null ? (
     <Spinner />
@@ -45,15 +26,47 @@ const Mission = ({ getUserMission, plan: { mission, loading } }) => {
         <span className='admin__menu-home'>Mission of the day</span>
       </div>
       <Fragment>
-        <table>
-          <tbody>{showMission(mission.product_list)}</tbody>
+        <table className='table mt-5 container'>
+          <thead className='thead-light'>
+            <tr>
+              <th scope='col'>STT</th>
+              <th scope='col'>Name</th>
+              <th scope='col'>Quantity</th>
+              <th scope='col'>Price</th>
+              <th scope='col'>Sale price</th>
+            </tr>
+          </thead>
+          <tbody>{showMission(mission)}</tbody>
         </table>
       </Fragment>
     </section>
   );
 };
 
-
+const showMission = (mission) => {
+  if (mission !== null) {
+    return mission.product_list.map((value, index) => {
+      return (
+        <tr key={index}>
+          <th scope='row'>{index + 1}</th>
+          <td>
+            <b>{value.product.toUpperCase()}</b>
+          </td>
+          <td>{value.quantity}</td>
+          <td>{value.price} $</td>
+          <td>{value.price + value.price * 0.1} $</td>
+        </tr>
+      );
+    });
+  } else
+    return (
+      <tr>
+        <td>
+          <b>No plan to day</b>
+        </td>
+      </tr>
+    );
+};
 
 Mission.propTypes = {
   getUserMission: PropTypes.func.isRequired,
