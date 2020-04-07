@@ -8,7 +8,26 @@ const Mission = ({ getUserMission, plan: { mission, loading } }) => {
   useEffect(() => {
     getUserMission();
   }, [getUserMission]);
-
+  const showMission = (e) => {
+    if (e != null) {
+    
+     return e.map((value, index) => {
+        console.log(value.product);
+        return (
+          <tr key={index}>
+            <th scope='row'>{index + 1}</th>
+            <td>
+              <b>{value.product.toUpperCase()}</b>
+            </td>
+            <td>{value.quantity}</td>
+            <td>{value.price} $</td>
+          </tr>
+        );
+        
+      });
+      
+      } else return <tr>Chưa được phân công</tr>;
+  };
   console.log(mission);
 
   return loading && mission === null ? (
@@ -34,23 +53,7 @@ const Mission = ({ getUserMission, plan: { mission, loading } }) => {
   );
 };
 
-const showMission = (e) => {
-  if (e != null) {
-    e.map((value, index) => {
-      console.log(value.product);
-      return (
-        <tr key={index}>
-          <th scope='row'>{index + 1}</th>
-          <td>
-            <b>{value.product.toUpperCase()}</b>
-          </td>
-          <td>{value.quantity}</td>
-          <td>{value.price} $</td>
-        </tr>
-      );
-    });
-  } else return <tr>Chưa được phân công</tr>;
-};
+
 
 Mission.propTypes = {
   getUserMission: PropTypes.func.isRequired,
