@@ -156,7 +156,7 @@ const Navbar = ({ auth: { isAuthenticated }, logout }) => {
                   <a className='nav-item nav-link header-item' href='#/'>
                     Tạo đơn hàng
                   </a>
-                  <Link to='/mission' className='nav-item nav-link header-item'>
+                  <Link to='/mission'  exact="true" className='nav-item nav-link header-item'>
                     Túi hàng
                   </Link>
                   <a className='nav-item nav-link header-item' href='#/'>

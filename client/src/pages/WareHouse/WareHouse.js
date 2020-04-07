@@ -9,6 +9,7 @@ const WareHouse = ({ getAllProduct, product: { loading, products } }) => {
   useEffect(() => {
     getAllProduct();
   }, [getAllProduct]);
+  console.log(products)
   return loading ? (
     <Spinner />
   ) : (
