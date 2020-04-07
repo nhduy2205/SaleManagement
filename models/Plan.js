@@ -7,6 +7,9 @@ const PlanSchema = new mongoose.Schema({
     },
     product_list: [
         {
+            id_product: {
+                type: mongoose.Schema.Types.ObjectId
+            },
             product: {
                 type: String
             },

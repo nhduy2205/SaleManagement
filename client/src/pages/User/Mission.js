@@ -4,13 +4,14 @@ import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { getUserMission } from './../../actions/mission';
 import Spinner from './../../components/Spinner/Spinner';
-const Mission = ({ getUserMission, mission: { mission, loading } }) => {
+const Mission = ({ getUserMission, plan: { mission, loading } }) => {
   useEffect(() => {
     getUserMission();
   }, [getUserMission]);
 
   console.log(mission);
-  return loading ? (
+
+  return loading && mission === null ? (
     <Spinner />
   ) : (
     <section className='admin'>
@@ -26,30 +27,37 @@ const Mission = ({ getUserMission, mission: { mission, loading } }) => {
       </div>
       <Fragment>
         <table>
-          {mission.product_list.map((e, index) => {
-            return (
-              <tr key={index}>
-                <th scope='row'>{index+1}</th>
-                <td>
-                  <b>{e.product.toUpperCase()}</b>
-                </td>
-                <td>{e.quantity}</td>
-                <td>{e.price} $</td>
-              </tr>
-            );
-          })}
+          <tbody>{showMission(mission.product_list)}</tbody>
         </table>
       </Fragment>
     </section>
   );
 };
 
+const showMission = (e) => {
+  if (e != null) {
+    e.map((value, index) => {
+      console.log(value.product);
+      return (
+        <tr key={index}>
+          <th scope='row'>{index + 1}</th>
+          <td>
+            <b>{value.product.toUpperCase()}</b>
+          </td>
+          <td>{value.quantity}</td>
+          <td>{value.price} $</td>
+        </tr>
+      );
+    });
+  } else return <tr>Chưa được phân công</tr>;
+};
+
 Mission.propTypes = {
   getUserMission: PropTypes.func.isRequired,
-  mission: PropTypes.object.isRequired,
+  plan: PropTypes.object.isRequired,
 };
 const mapStateToProps = (state) => ({
-  mission: state.mission,
+  plan: state.mission,
 });
 
 export default connect(mapStateToProps, { getUserMission })(Mission);

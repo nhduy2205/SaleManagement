@@ -121,6 +121,9 @@ const Navbar = ({ auth: { isAuthenticated }, logout }) => {
           <Fragment>
             <section className='header'>
               <div className='header-info'>
+                <div className='header-datenow' id='vnclock'>
+                  {/* {time()} */}
+                </div>
                 <i className='fa fa-user' />
                 User
                 <a href='/' onClick={logout} className='login-btn ml-3'>

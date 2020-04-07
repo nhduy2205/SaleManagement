@@ -8,8 +8,7 @@ const InitialState = {
 const mission = (state = InitialState, action) => {
     const {type, payload} = action
     switch (type) {
-        case GET_USERMISSION:
-            console.log(action)
+        case GET_USERMISSION:            
             return {
                 ...state,
                 loading: false,
