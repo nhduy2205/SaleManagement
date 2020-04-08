@@ -19,7 +19,7 @@ const AddProduct = ({ addProduct }) => {
   const onSubmit = (e) => {
     e.preventDefault();
     addProduct(formData);
-  };
+  }; 
   return (
     <section className='admin'>
       <h2 className='admin__title'>Add Product</h2>
