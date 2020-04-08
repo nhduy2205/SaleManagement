@@ -32,7 +32,6 @@ const Mission = ({ getUserMission, plan: { mission, loading } }) => {
               <th scope='col'>STT</th>
               <th scope='col'>Name</th>
               <th scope='col'>Quantity</th>
-              <th scope='col'>Price</th>
               <th scope='col'>Sale price</th>
             </tr>
           </thead>
@@ -54,7 +53,6 @@ const showMission = (mission) => {
           </td>
           <td>{value.quantity}</td>
           <td>{value.price} $</td>
-          <td>{value.price * 1.2} $</td>
         </tr>
       );
     });

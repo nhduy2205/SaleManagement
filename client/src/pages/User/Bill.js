@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { getUserMission, createBill } from './../../actions/mission';
 import Spinner from './../../components/Spinner/Spinner';
+import Alert from './../../components/Alert/Alert'
 const Mission = ({
   getUserMission,
   createBill,
@@ -35,7 +36,7 @@ const Mission = ({
     <Spinner />
   ) : (
     <section className='admin'>
-      <h2 className='admin__title'>Mission of the day</h2>
+      <h2 className='admin__title'>Create bill</h2>
       <div className='admin__menu'>
         <span>
           <Link to='/user' exact='true' style={{ color: 'black' }}>
@@ -43,19 +44,22 @@ const Mission = ({
           </Link>
         </span>
         <i className='fa fa-chevron-right'></i>
-        <span className='admin__menu-home'>Mission of the day</span>
+        <span className='admin__menu-home'>Create bill</span>
       </div>
       {/* bill body */}
       <div className='container'>
         <div className='row'>
           <table className='table mt-5 col-9'>
-            <tr className='thead-light'>
-              <th scope='col'>STT</th>
-              <th scope='col'>Name</th>
-              <th scope='col'>Quantity</th>
-              <th scope='col'>Sale price</th>
-              <th scope='col'>Consume</th>
-            </tr>
+            <tbody>
+              <tr className='thead-light'>
+                <th scope='col'>STT</th>
+                <th scope='col'>Name</th>
+                <th scope='col'>Quantity</th>
+                <th scope='col'>Sale price</th>
+                <th scope='col'>Consume</th>
+                <th scope='col'>Choose</th>
+              </tr>
+            </tbody>
             <tbody>{showMission(mission)}</tbody>
           </table>
           <div className='col-3'>
@@ -95,6 +99,7 @@ const Mission = ({
           </div>
         </div>
       </div>
+      <Alert/>
     </section>
   );
 };
@@ -108,7 +113,7 @@ const showMission = (mission) => {
       const onChange = (e) => {
         item.quantity = e.target.value;
       };
-      item.price = value.price * 1.2;
+      item.price = value.price;
       return (
         <tr key={index}>
           <th scope='row'>{index + 1}</th>
@@ -116,10 +121,13 @@ const showMission = (mission) => {
             <b>{value.product.toUpperCase()}</b>
           </td>
           <td>{value.quantity}</td>
-          <td>{value.price * 1.2} $</td>
+          <td>{value.price} $</td>
           <td>
             <input
-              type='text'
+              className='form-control'
+              min={0}
+              max={value.quantity}
+              type='number'
               name='sale_quantity'
               onChange={(e) => onChange(e)}
             />
