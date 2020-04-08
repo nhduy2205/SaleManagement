@@ -44,7 +44,7 @@ const Mission = ({ getUserMission, plan: { mission, loading } }) => {
 };
 
 const showMission = (mission) => {
-  if (mission !== null) {
+  if (mission !== '') {
     return mission.product_list.map((value, index) => {
       return (
         <tr key={index}>
