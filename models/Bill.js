@@ -1,11 +1,20 @@
-const mongoose = require ('mongoose')
- 
-const PlanSchema = new mongoose.Schema({
+const mongoose = require('mongoose')
+
+
+const BillSchema = new mongoose.Schema({
     user: {
         type: mongoose.Schema.Types.ObjectId,
         ref: 'users'
     },
-    product_list: [
+    customer_name: {
+        type: String,
+        required: true
+    },
+    customer_phone: {
+        type: String,
+        required: true
+    },
+    bills: [
         {
             id_product: {
                 type: mongoose.Schema.Types.ObjectId,
@@ -20,15 +29,16 @@ const PlanSchema = new mongoose.Schema({
             price: {
                 type: Number
             }
-
         }
     ],
+    total_price: {
+        type: Number
+    },
     date: {
         type: Date,
         default: Date.now
     }
 
-    
 })
 
-module.exports = Plan = mongoose.model('plans', PlanSchema )
+module.exports = Bill = mongoose.model('bills', BillSchema)

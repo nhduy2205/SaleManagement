@@ -78,7 +78,7 @@ router.get('/mission',  auth, async (req, res) => {
         var dateNow = new Date()
         var today = moment(dateNow).format('YYYY-MM-DD')
         var plantoday = plan.filter(val => moment(val.date).format('YYYY-MM-DD') === today)
-        console.log(plantoday)
+        // console.log(plantoday)
         return res.status(200).json(plantoday[0])
     } catch (error) {
         console.error(error.message)
