@@ -6,23 +6,23 @@ const InitialState = {
   errors: [],
 };
 const mission = (state = InitialState, action) => {
-  const { type, payload } = action;
-  switch (type) {
-    case GET_USERMISSION:
-      return {
-        ...state,
-        loading: false,
-        mission: payload,
-      };
-    case CREATE_BILLS_SUCCESS:
-      return {
-        ...state,
-        loading: false,
-      };
-
-    default:
-      return state;
-  }
+    const {type, payload} = action
+    switch (type) {
+        case GET_USERMISSION:
+                  
+            return {
+                ...state,
+                loading: false,
+                mission: payload,
+            }; 
+        case CREATE_BILLS_SUCCESS:  
+            return {
+                ...state,
+                loading: false
+            }
+        default:
+            return state
+    }
 };
 
 export default mission;

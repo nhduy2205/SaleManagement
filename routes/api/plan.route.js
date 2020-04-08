@@ -35,7 +35,7 @@ router.post('/:id', auth, admin, async (req, res) => {
         }       
         
         var user = await User.findById(req.params.id)
-        console.log(user)
+        // console.log(user)
         var newPlan = new Plan({
             user: user,
             product_list: req.body,

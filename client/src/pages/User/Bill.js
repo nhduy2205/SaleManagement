@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { getUserMission, createBill } from './../../actions/mission';
 import Spinner from './../../components/Spinner/Spinner';
-import Alert from './../../components/Alert/Alert'
+import Alert from './../../components/Alert/Alert';
 const Mission = ({
   getUserMission,
   createBill,
@@ -45,6 +45,9 @@ const Mission = ({
         </span>
         <i className='fa fa-chevron-right'></i>
         <span className='admin__menu-home'>Create bill</span>
+        <div className='container'>
+          <Alert />
+        </div>
       </div>
       {/* bill body */}
       <div className='container'>
@@ -99,7 +102,6 @@ const Mission = ({
           </div>
         </div>
       </div>
-      <Alert/>
     </section>
   );
 };
