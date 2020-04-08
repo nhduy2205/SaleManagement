@@ -1,10 +1,10 @@
-import {GET_USERMISSION, CREATE_BILLS_SUCCESS} from './../actions/types'
+import { GET_USERMISSION, CREATE_BILLS_SUCCESS } from './../actions/types';
 const InitialState = {
-    mission: null,
-    missions: [],
-    loading: true,
-    errors: [] 
-}
+  mission: null,
+  missions: [],
+  loading: true,
+  errors: [],
+};
 const mission = (state = InitialState, action) => {
     const {type, payload} = action
     switch (type) {
@@ -23,6 +23,6 @@ const mission = (state = InitialState, action) => {
         default:
             return state
     }
-}
+};
 
-export default mission
+export default mission;

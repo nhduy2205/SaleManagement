@@ -113,7 +113,10 @@ const showMission = (mission) => {
       item.id_product = value.id_product;
       item.product = value.product;
       const onChange = (e) => {
-        item.quantity = e.target.value;
+        if (e.target.value > value.quantity) {
+          console.log('so luong lon hon so luong hien co');
+          item.quantity = value.quantity;
+        } else item.quantity = e.target.value;
       };
       item.price = value.price;
       return (
