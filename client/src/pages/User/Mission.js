@@ -54,7 +54,7 @@ const showMission = (mission) => {
           </td>
           <td>{value.quantity}</td>
           <td>{value.price} $</td>
-          <td>{value.price + value.price * 0.1} $</td>
+          <td>{value.price * 1.2} $</td>
         </tr>
       );
     });
