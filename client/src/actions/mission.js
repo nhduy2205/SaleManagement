@@ -23,7 +23,8 @@ export const getUserMission = () => async (dispatch) => {
         'Content-Type': 'application/json',
       },
     };
-    const body = JSON.stringify(customer_name, customer_phone, bills);
+    
+    const body = JSON.stringify({customer_name, customer_phone, bills});
     try {
       await axios.post(`/api/bills`, body, config);
       dispatch({

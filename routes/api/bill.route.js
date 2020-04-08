@@ -47,10 +47,23 @@ router.post('/', auth , async (req, res) => {
         await bill.save()
         bills.map( async val => {
             var product = await Product.findById(val.id_product)
-            product.quantity_sold += val.quantity
+            product.quantity_sold = parseInt(product.quantity_sold) + parseInt(val.quantity)
             product.quantity_remaining -= val.quantity
             await product.save()
         })
+        // if(plantoday){
+        //     plantoday.product_list.map( async val => {
+        //         bills.map(  bill => {
+        //             if(bill.id_product === val.id_product){
+        //                 val.quantity -= bill.quantity
+        //             }
+        //             return val.quantity
+        //         })
+        //         await plantoday.save()
+                
+        //     })
+        // }
+        
         return res.status(200).json(bill)
     } catch (error) {
         console.error(error.message)

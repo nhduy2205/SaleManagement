@@ -49,6 +49,7 @@ const Mission = ({
       <div className='container'>
         <div className='row'>
           <table className='table mt-5 col-9'>
+            <thead>
             <tr className='thead-light'>
               <th scope='col'>STT</th>
               <th scope='col'>Name</th>
@@ -56,6 +57,7 @@ const Mission = ({
               <th scope='col'>Sale price</th>
               <th scope='col'>Consume</th>
             </tr>
+            </thead>
             <tbody>{showMission(mission)}</tbody>
           </table>
           <div className='col-3'>
