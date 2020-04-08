@@ -8,27 +8,8 @@ const Mission = ({ getUserMission, plan: { mission, loading } }) => {
   useEffect(() => {
     getUserMission();
   }, [getUserMission]);
-  const showMission = (e) => {
-    if (e != null) {
-    
-     return e.map((value, index) => {
-        console.log(value.product);
-        return (
-          <tr key={index}>
-            <th scope='row'>{index + 1}</th>
-            <td>
-              <b>{value.product.toUpperCase()}</b>
-            </td>
-            <td>{value.quantity}</td>
-            <td>{value.price} $</td>
-          </tr>
-        );
-        
-      });
-      
-      } else return <tr>No plan to day</tr>;
-  };
-  console.log(mission);
+
+  // console.log(today.now());
 
   return loading && mission === null ? (
     <Spinner />
@@ -55,14 +36,37 @@ const Mission = ({ getUserMission, plan: { mission, loading } }) => {
               <th scope='col'>Sale price</th>
             </tr>
           </thead>
-          <tbody>{showMission(mission.product_list)}</tbody>
+          <tbody>{showMission(mission)}</tbody>
         </table>
       </Fragment>
     </section>
   );
 };
 
-
+const showMission = (mission) => {
+  if (mission !== '') {
+    return mission.product_list.map((value, index) => {
+      return (
+        <tr key={index}>
+          <th scope='row'>{index + 1}</th>
+          <td>
+            <b>{value.product.toUpperCase()}</b>
+          </td>
+          <td>{value.quantity}</td>
+          <td>{value.price} $</td>
+          <td>{value.price * 1.2} $</td>
+        </tr>
+      );
+    });
+  } else
+    return (
+      <tr>
+        <td>
+          <b>No plan to day</b>
+        </td>
+      </tr>
+    );
+};
 
 Mission.propTypes = {
   getUserMission: PropTypes.func.isRequired,

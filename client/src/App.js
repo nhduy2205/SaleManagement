@@ -13,6 +13,7 @@ import AddProduct from './pages/AddProduct/AddProduct';
 import WareHouse from './pages/WareHouse/WareHouse';
 import PlanningDetails from './pages/PlanningDetails/PlanningDetails';
 import Mission from './pages/User/Mission';
+import Bill from './pages/User/Bill';
 const App = () => {
   useEffect(() => {
     if (localStorage.token) {
@@ -48,6 +49,7 @@ const App = () => {
             exact
             component={Mission}
           ></PrivateRoute>
+          <PrivateRoute path='/bill' exact component={Bill}></PrivateRoute>
         </Switch>
       </Router>
     </Provider>

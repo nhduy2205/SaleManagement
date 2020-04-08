@@ -6,7 +6,6 @@ import jwtDecode from 'jwt-decode';
 import { Link } from 'react-router-dom';
 
 const Navbar = ({ auth: { isAuthenticated }, logout }) => {
-
   function getVNTime() {
     var time = new Date();
     var dow = time.getDay();
@@ -154,16 +153,24 @@ const Navbar = ({ auth: { isAuthenticated }, logout }) => {
                     className='nav-item nav-link active header-item'
                     exact='true'
                   >
-                    Trang chủ<span className='sr-only'>(current)</span>
+                    Home<span className='sr-only'>(current)</span>
+                  </Link>
+                  <Link
+                    to='/bill'
+                    exact='true'
+                    className='nav-item nav-link header-item'
+                  >
+                    Create bill
+                  </Link>
+                  <Link
+                    to='/mission'
+                    exact='true'
+                    className='nav-item nav-link header-item'
+                  >
+                    Bag
                   </Link>
                   <a className='nav-item nav-link header-item' href='#/'>
-                    Tạo đơn hàng
-                  </a>
-                  <Link to='/mission'  exact="true" className='nav-item nav-link header-item'>
-                    Túi hàng
-                  </Link>
-                  <a className='nav-item nav-link header-item' href='#/'>
-                    Thêm cửa hàng
+                    Add stores
                   </a>
                 </div>
               </div>
@@ -182,4 +189,4 @@ Navbar.propTypes = {
   auth: PropTypes.object.isRequired,
 };
 
-export default connect(mapStateToProps, { logout})(Navbar);
+export default connect(mapStateToProps, { logout })(Navbar);
