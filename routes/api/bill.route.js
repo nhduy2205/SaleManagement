@@ -7,6 +7,33 @@ const Bill = require('./../../models/Bill')
 const Plan = require('./../../models/Plan')
 const User = require('./../../models/User')
 const auth = require('./../../middleware/auth')
+const admin = require('./../../middleware/admin')
+
+// @route   GET api/bills/
+// @desc    route get bills
+// @access  Private
+//Xem all bills
+router.get('/', auth, admin, async (req, res) => {
+    try {
+        var today = moment(new Date()).format('YYYY-MM-DD');
+        
+
+        const data = await Bill.find().sort({date: -1})
+        const plantoday = data.filter(val => moment(val.date).format('YYYY-MM-DD') === today)
+        return res.status(200).json(plantoday)
+    } catch (error) {
+        console.error(error.message)
+        res.status(500).send('Server Error!')
+    }
+})
+
+
+
+
+// @route   POST api/bills/
+// @desc    route post bills
+// @access  Private
+//tạo bill trog ngày hôm nay
 router.post('/', auth , async (req, res) => {
     try {
         const bill_of_user = await Bill.find({user: req.user.id})
@@ -50,19 +77,7 @@ router.post('/', auth , async (req, res) => {
             product.quantity_sold = parseInt(product.quantity_sold) + parseInt(val.quantity)
             product.quantity_remaining -= val.quantity
             await product.save()
-        })
-        // if(plantoday){
-        //     plantoday.product_list.map( async val => {
-        //         bills.map(  bill => {
-        //             if(bill.id_product === val.id_product){
-        //                 val.quantity -= bill.quantity
-        //             }
-        //             return val.quantity
-        //         })
-        //         await plantoday.save()
-                
-        //     })
-        // }
+        })        
         
         return res.status(200).json(bill)
     } catch (error) {

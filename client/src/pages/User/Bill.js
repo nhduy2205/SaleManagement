@@ -33,67 +33,7 @@ const Mission = ({
     console.log(bills);
     createBill(formData.customer_name, formData.customer_phone, bills);
   };
-  const showMission = (mission) => {
   
-    if (mission !== '') {
-      return mission.product_list.map((value, index) => {
-        const item = {};
-        item.id_product = value.id_product;
-        item.product = value.product;
-        const onChange = (e) => {
-          if (e.target.value > value.quantity) {
-            setAlert('The quantity is not valid', 'danger', 2000)
-            
-            item.quantity = value.quantity;
-          } else item.quantity = e.target.value;
-        };
-        item.price = value.price;
-        return (
-          <tr key={index}>
-            <th scope='row'>{index + 1}</th>
-            <td>
-              <b>{value.product.toUpperCase()}</b>
-            </td>
-            <td>{value.quantity}</td>
-            <td>{value.price} $</td>
-            <td>
-              <input
-                className='form-control'
-                min={0}
-                max={value.quantity}
-                type='number'
-                name='sale_quantity'
-                onChange={(e) => onChange(e)}
-              />
-            </td>
-            <td>
-              <input
-                type='button'
-                className='btn btn-warning'
-                value='Choose'
-                onClick={(e) => {
-                  addBill(item);
-                }}
-              />
-            </td>
-          </tr>
-        );
-      });
-    } else
-      return (
-        <tr>
-          <td>
-            <b>No plan to day</b>
-          </td>
-        </tr>
-      );
-  };
-  var bills = [];
-  
-  var addBill = (e) => {
-    bills.push(e);
-    console.log(bills);
-  };
   return loading && mission === null ? (
     <Spinner />
   ) : (
@@ -167,8 +107,69 @@ const Mission = ({
     </section>
   );
   
+  
 };
+const showMission = (mission) => {
+  
+  if (mission !== '') {
+    return mission.product_list.map((value, index) => {
+      const item = {};
+      item.id_product = value.id_product;
+      item.product = value.product;
+      const onChange = (e) => {
+        if (e.target.value > value.quantity) {
+          setAlert('The quantity is not valid', 'danger', 2000)
+          
+          item.quantity = value.quantity;
+        } else item.quantity = e.target.value;
+      };
+      item.price = value.price;
+      return (
+        <tr key={index}>
+          <th scope='row'>{index + 1}</th>
+          <td>
+            <b>{value.product.toUpperCase()}</b>
+          </td>
+          <td>{value.quantity}</td>
+          <td>{value.price} $</td>
+          <td>
+            <input
+              className='form-control'
+              min={0}
+              max={value.quantity}
+              type='number'
+              name='sale_quantity'
+              onChange={(e) => onChange(e)}
+            />
+          </td>
+          <td>
+            <input
+              type='button'
+              className='btn btn-warning'
+              value='Choose'
+              onClick={(e) => {
+                addBill(item);
+              }}
+            />
+          </td>
+        </tr>
+      );
+    });
+  } else
+    return (
+      <tr>
+        <td>
+          <b>No plan to day</b>
+        </td>
+      </tr>
+    );
+};
+var bills = [];
 
+var addBill = (e) => {
+  bills.push(e);
+  console.log(bills);
+};
 
 
 Mission.propTypes = {
