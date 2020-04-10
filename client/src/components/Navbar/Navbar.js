@@ -110,6 +110,12 @@ const Navbar = ({ auth: { isAuthenticated }, logout }) => {
                   <a className='nav-item nav-link header-item' href='#/'>
                     Staff
                   </a>
+                  <Link
+                    to='/allbills'
+                    className='nav-item nav-link header-item'
+                  >
+                    Bills today
+                  </Link>
                 </div>
               </div>
             </nav>

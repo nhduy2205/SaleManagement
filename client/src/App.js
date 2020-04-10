@@ -14,6 +14,8 @@ import WareHouse from './pages/WareHouse/WareHouse';
 import PlanningDetails from './pages/PlanningDetails/PlanningDetails';
 import Mission from './pages/User/Mission';
 import Bill from './pages/User/Bill';
+import Allbills from './pages/Admin/Allbills';
+import BillDetail from './pages/Admin/BillDetail';
 const App = () => {
   useEffect(() => {
     if (localStorage.token) {
@@ -50,6 +52,12 @@ const App = () => {
             component={Mission}
           ></PrivateRoute>
           <PrivateRoute path='/bill' exact component={Bill}></PrivateRoute>
+          <PrivateRoute path='/allbills' exact component={Allbills}></PrivateRoute>
+          <PrivateRoute
+            path='/billdetail/:id'
+            exact
+            component={BillDetail}
+          ></PrivateRoute>
         </Switch>
       </Router>
     </Provider>

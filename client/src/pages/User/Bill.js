@@ -5,7 +5,9 @@ import { connect } from 'react-redux';
 import { getUserMission, createBill } from './../../actions/mission';
 import Spinner from './../../components/Spinner/Spinner';
 import Alert from './../../components/Alert/Alert';
+import {setAlert} from './../../actions/alert';
 const Mission = ({
+  setAlert,
   getUserMission,
   createBill,
   plan: { mission, loading },
@@ -31,7 +33,7 @@ const Mission = ({
     console.log(bills);
     createBill(formData.customer_name, formData.customer_phone, bills);
   };
-
+  
   return loading && mission === null ? (
     <Spinner />
   ) : (
@@ -104,9 +106,11 @@ const Mission = ({
       </div>
     </section>
   );
+  
+  
 };
-
 const showMission = (mission) => {
+  
   if (mission !== '') {
     return mission.product_list.map((value, index) => {
       const item = {};
@@ -114,6 +118,8 @@ const showMission = (mission) => {
       item.product = value.product;
       const onChange = (e) => {
         if (e.target.value > value.quantity) {
+          setAlert('The quantity is not valid', 'danger', 2000)
+          
           item.quantity = value.quantity;
         } else item.quantity = e.target.value;
       };
@@ -165,15 +171,16 @@ var addBill = (e) => {
   console.log(bills);
 };
 
+
 Mission.propTypes = {
+  setAlert: PropTypes.func.isRequired,
   getUserMission: PropTypes.func.isRequired,
   createBill: PropTypes.func.isRequired,
   plan: PropTypes.object.isRequired,
 };
 const mapStateToProps = (state) => ({
   plan: state.mission,
+  alert: state.alert
 });
 
-export default connect(mapStateToProps, { getUserMission, createBill })(
-  Mission
-);
+export default connect(mapStateToProps, { getUserMission, createBill, setAlert })(Mission);
