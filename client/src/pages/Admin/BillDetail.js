@@ -6,15 +6,13 @@ import Spinner from './../../components/Spinner/Spinner';
 import { getBillDetail } from './../../actions/mission';
 import { Link } from 'react-router-dom';
 
-const BillDetail = ({ getBillDetail, bill: { loading, bill }, match }) => {
+const BillDetail = ({ getBillDetail, bill: {loading, billDetail}, match }) => {
   useEffect(() => {
-    getBillDetail(match.params.id);
-  }, [getBillDetail]);
+    getBillDetail(match.params.id)
+  }, [getBillDetail, match.params.id])
 
-  console.log(bill);
-  return loading ? (
-    <Spinner />
-  ) : (
+  // console.log(bill);
+  return loading && billDetail === null ? (<Spinner />) : (
     <Fragment>
       <section className='admin'>
         <h2 className='admin__title'>Bill Detail</h2>
@@ -43,15 +41,20 @@ const BillDetail = ({ getBillDetail, bill: { loading, bill }, match }) => {
                   </tr>
                 </thead>
                 <tbody>
-                  {/* <tr>
-                    <td>{bill.customer_name}</td>
-                    <td>{bill.customer_phone}</td>
-                    <td>{bill.user}</td>
-                    <td>{bill.date}</td>
-                    <td>
-                      {bill.total_price} <strong>$</strong>
-                    </td>
-                  </tr> */}
+                  {
+                    billDetail ? (
+                    <tr>
+                      
+                      <td>{billDetail.customer_name}</td>
+                      <td>{billDetail.customer_phone}</td>
+                      <td>{billDetail.user}</td>
+                      <td>{billDetail.date}</td>
+                      <td>
+                        {billDetail.total_price} <strong>$</strong>
+                      </td>
+                    </tr>
+                    ) : ''
+                  }  
                 </tbody>
               </table>
             </div>
@@ -61,12 +64,13 @@ const BillDetail = ({ getBillDetail, bill: { loading, bill }, match }) => {
     </Fragment>
   );
 };
-const mapStateToProps = (state) => {
+const mapStateToProps = state => {
   return {
     bill: state.bill,
   };
 };
 BillDetail.propTypes = {
   bill: PropTypes.object.isRequired,
+  getBillDetail: PropTypes.func.isRequired
 };
 export default connect(mapStateToProps, { getBillDetail })(BillDetail);
