@@ -63,7 +63,7 @@ const PlanningDetails = ({
             </tr>
           </thead>
           <tbody>
-            {products.map((val, index) => {
+            { products ? products.map((val, index) => {
               const item = {};
               item.id_product = val._id
               item.product = val.name;
@@ -101,7 +101,7 @@ const PlanningDetails = ({
                   </td>
                 </tr>
               );
-            })}
+            }) : ''}
           </tbody>
         </table>
         <div className="container d-flex justify-content-center my-3">
