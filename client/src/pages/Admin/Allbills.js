@@ -58,7 +58,10 @@ const Allbills = ({ getAllBills, bills: { bills, loading } }) => {
                             to={`/billdetail/${value._id}`}
                             className='admin-action'
                           >
-                            <i className='fa fa-pencil' aria-hidden='true' />
+                            <i
+                              className='fa fa-search-plus'
+                              aria-hidden='true'
+                            />
                             Detail
                           </Link>
                         </td>
