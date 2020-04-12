@@ -6,13 +6,19 @@ import Spinner from './../../components/Spinner/Spinner';
 import { getBillDetail } from './../../actions/mission';
 import { Link } from 'react-router-dom';
 
-const BillDetail = ({ getBillDetail, bill: {loading, billDetail}, match }) => {
+const BillDetail = ({
+  getBillDetail,
+  bill: { loading, billDetail },
+  match,
+}) => {
   useEffect(() => {
-    getBillDetail(match.params.id)
-  }, [getBillDetail, match.params.id])
+    getBillDetail(match.params.id);
+  }, [getBillDetail, match.params.id]);
 
   // console.log(bill);
-  return loading && billDetail === null ? (<Spinner />) : (
+  return loading && billDetail === null ? (
+    <Spinner />
+  ) : (
     <Fragment>
       <section className='admin'>
         <h2 className='admin__title'>Bill Detail</h2>
@@ -25,37 +31,61 @@ const BillDetail = ({ getBillDetail, bill: {loading, billDetail}, match }) => {
           <i className='fa fa-chevron-right'></i>
           <span className='admin__menu-home'>Bill Detail</span>
         </div>
-        <div className='container'>
+        <div classname='container'>
           <div className='row'>
-            <div className='col-12 assign'>
+            <div className='col-6 assign' style={{ margin: '0 auto' }}>
               <table className='table'>
                 <thead className='thead-dark'>
-                  <tr>
-                    <th scope='col'>#</th>
-                    <th scope='col'>Custumer</th>
-                    <th scope='col'>Phone</th>
-                    <th scope='col'>Perform</th>
-                    <th scope='col'>Date</th>
-                    <th scope='col'>Total bill</th>
-                    <th scope='col'>Other</th>
+                  <tr className='text-center'>
+                    <th colSpan='2'>Delivery notes</th>
                   </tr>
                 </thead>
-                <tbody>
-                  {
-                    billDetail ? (
+
+                {billDetail ? (
+                  <tbody>
                     <tr>
-                      
+                      <th scope='col'>Id: </th>
+                      <td>{billDetail._id}</td>
+                    </tr>
+                    <tr>
+                      <th scope='col'>Custumer</th>
                       <td>{billDetail.customer_name}</td>
+                    </tr>
+                    <tr>
+                      <th scope='col'>Phone</th>
                       <td>{billDetail.customer_phone}</td>
+                    </tr>
+                    <tr>
+                      <th scope='col'>Perform</th>
                       <td>{billDetail.user}</td>
+                    </tr>
+                    <tr>
+                      <th scope='col'>Date</th>
                       <td>{billDetail.date}</td>
+                    </tr>
+                    <tr>
+                      <th scope='col'>Products</th>
+                      <td>
+                        {billDetail.bills.map((value, key) => {
+                          return (
+                            <p>
+                              {value.product}: {value.quantity}x{value.price}{' '}
+                              <strong>$</strong>
+                            </p>
+                          );
+                        })}
+                      </td>
+                    </tr>
+                    <tr>
+                      <th scope='col'>Total bill</th>
                       <td>
                         {billDetail.total_price} <strong>$</strong>
                       </td>
                     </tr>
-                    ) : ''
-                  }  
-                </tbody>
+                  </tbody>
+                ) : (
+                  ''
+                )}
               </table>
             </div>
           </div>
@@ -64,13 +94,13 @@ const BillDetail = ({ getBillDetail, bill: {loading, billDetail}, match }) => {
     </Fragment>
   );
 };
-const mapStateToProps = state => {
+const mapStateToProps = (state) => {
   return {
     bill: state.bill,
   };
 };
 BillDetail.propTypes = {
   bill: PropTypes.object.isRequired,
-  getBillDetail: PropTypes.func.isRequired
+  getBillDetail: PropTypes.func.isRequired,
 };
 export default connect(mapStateToProps, { getBillDetail })(BillDetail);
