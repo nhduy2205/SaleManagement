@@ -2,7 +2,7 @@ import { BILLS_LOADED, BILL_DETAIL } from '../actions/types';
 
 const InitialState = {
   bills: null,
-  bill: null,
+  billDetail: null,
   loading: true,
 };
 
@@ -19,7 +19,7 @@ const bill = (state = InitialState, action) => {
       return {
         ...state,
         loading: false,
-        bill: payload,
+        billDetail: payload,
       };
     default:
       return state;

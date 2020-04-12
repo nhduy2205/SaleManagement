@@ -18,6 +18,31 @@ router.get('/', auth, admin, async (req, res) => {
         res.status(500).json('Server Error')
     }
 })
+// @route   GET api/products/pagination
+// @desc    route get all product
+// @access  Private
+//Xem sản phẩm phân trang
+router.get('/pagination', auth, admin, async (req, res) => {
+    try {
+        const products = await Product.find()
+        const pageNo = req.query.pageNo
+        const pageSize = req.query.pageSize
+        const startIndex = (pageNo - 1) * pageSize;
+        const endIndex = pageNo * pageSize
+        var results = {}
+        results.pagination = {
+            pageSize: parseInt(pageSize),
+            pageNo: parseInt(pageNo),
+            totalRows: products.length
+        }
+        results.data = products.slice(startIndex, endIndex)
+        
+        res.status(200).json(results)
+    } catch (error) {
+        console.error(error.message)
+        res.status(500).json('Server Error')
+    }
+})
 
 
 // @route   GET api/products/:id

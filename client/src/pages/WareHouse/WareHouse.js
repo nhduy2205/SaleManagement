@@ -1,41 +1,53 @@
-import React, { Fragment, useEffect } from 'react';
+import React, { Fragment, useEffect , useState} from 'react';
 import ProductItem from './ProductItem';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import Spinner from './../../components/Spinner/Spinner';
-import { getAllProduct } from './../../actions/product';
+import { getProductPagination } from './../../actions/product';
 import {Link} from 'react-router-dom'
-const WareHouse = ({ getAllProduct, product: { loading, products } }) => {
+import queryString from 'query-string'
+import Pagination from './../../components/Pagination/Pagination'
+const WareHouse = ({ getProductPagination, product: { loading, productspgn } }) => {
+  const [filters, setFilters] = useState({
+    pageSize: 3,
+    pageNo: 1
+  })
+  
+  const paramsString = queryString.stringify(filters)
   useEffect(() => {
-    getAllProduct();
-  }, [getAllProduct]);
+    getProductPagination(paramsString);
+  }, [getProductPagination, paramsString]);
+  const handleChangePage = (newPage) => {
+    console.log('NewPage', newPage)
+    setFilters({...filters, pageNo: newPage})
+  }
   // console.log(products)
-  var total_entry_price = 0;
-  var total_entry_quantity = 0;
-  var total_quantity_sold = 0;
-  var total_quantity_remaining = 0;
-  var total_export_price = 0;
-  products.map(val => {
-    total_entry_price += val.entry_quantity * val.entry_price
-    return total_entry_price
-  })
-  products.map(val => {
-    total_entry_quantity += val.entry_quantity 
-    return total_entry_quantity
-  })
-  products.map(val => {
-    total_quantity_sold += val.quantity_sold
-    return total_quantity_sold
-  })
-  products.map(val => {
-    total_quantity_remaining += val.quantity_remaining
-    return total_quantity_remaining
-  })
-  products.map(val => {
-    total_export_price += val.quantity_sold * val.export_price
-    return total_export_price
-  })
-  return loading ? (
+  // var total_entry_price = 0;
+  // var total_entry_quantity = 0;
+  // var total_quantity_sold = 0;
+  // var total_quantity_remaining = 0;
+  // var total_export_price = 0;
+  // products.data.map(val => {
+  //   total_entry_price += val.entry_quantity * val.entry_price
+  //   return total_entry_price
+  // })
+  // products.data.map(val => {
+  //   total_entry_quantity += val.entry_quantity 
+  //   return total_entry_quantity
+  // })
+  // products.data.map(val => {
+  //   total_quantity_sold += val.quantity_sold
+  //   return total_quantity_sold
+  // })
+  // products.data.map(val => {
+  //   total_quantity_remaining += val.quantity_remaining
+  //   return total_quantity_remaining
+  // })
+  // products.data.map(val => {
+  //   total_export_price += val.quantity_sold * val.export_price
+  //   return total_export_price
+  // })
+  return loading &&  !productspgn ? (
     <Spinner />
   ) : (
     <Fragment>
@@ -63,22 +75,27 @@ const WareHouse = ({ getAllProduct, product: { loading, products } }) => {
           </tr>
         </thead>
         <tbody>
-          {products.map((val, index) => {
+          {productspgn && productspgn.data ? productspgn.data.map((val, index) => {
             return <ProductItem key={index} index={index} product={val} />;
-          })}
-          <tr>
+          }) : ''}
+          {/* <tr>
             <th>Total</th>
             <th></th>
             <th>{total_entry_price} $</th>
             <th>{total_entry_quantity}</th>
             <th>{total_quantity_sold}</th>
             <th>{total_quantity_remaining}</th>
-            <th>{total_export_price}</th>
+            <th>{total_export_price} $</th>
             <th></th>
-          </tr>
+          </tr> */}
         </tbody>
       </table>
       </section>
+      <div className="container d-flex justify-content-center">
+      <Pagination 
+            pagination= { productspgn && productspgn.pagination ? productspgn.pagination : ''}
+            onPageChange={handleChangePage}
+          /></div>
     </Fragment>
   );
 };
@@ -89,8 +106,8 @@ const mapStateToProps = (state) => {
   };
 };
 WareHouse.propTypes = {
-  getAllProduct: PropTypes.func.isRequired,
+  getProductPagination: PropTypes.func.isRequired,
   product: PropTypes.object.isRequired,
 };
 
-export default connect(mapStateToProps, { getAllProduct })(WareHouse);
+export default connect(mapStateToProps, { getProductPagination })(WareHouse);

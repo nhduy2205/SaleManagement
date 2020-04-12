@@ -5,6 +5,7 @@ import {
   GETALL_PRODUCT,
   DELETE_PRODUCT,
   PLANNING_SUCCESS,
+  GETALL_PRODUCT_PAGINATION
 } from './types';
 // Thêm mới sản phẩm vào kho hàng
 export const addProduct = (formData) => async (dispatch) => {
@@ -42,6 +43,21 @@ export const getAllProduct = () => async (dispatch) => {
     console.error(error);
   }
 };
+//Lấy sản phẩm để phân trang
+export const getProductPagination = (paramsString) => async (dispatch) => {
+  try {
+    const res = await axios.get(`/api/products/pagination?${paramsString}`);
+    dispatch({
+      type: GETALL_PRODUCT_PAGINATION,
+      payload: res.data,
+    });
+  } catch (error) {
+    console.error(error);
+  }
+};
+
+
+
 
 //Xóa 1 sản phẩm theo id
 export const deleteProduct = (id) => async (dispatch) => {

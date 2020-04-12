@@ -168,7 +168,7 @@ var bills = [];
 
 var addBill = (e) => {
   bills.push(e);
-  console.log(bills);
+  // console.log(bills);
 };
 
 
