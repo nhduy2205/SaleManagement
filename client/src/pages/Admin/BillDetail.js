@@ -9,11 +9,22 @@ import { Link } from 'react-router-dom';
 const BillDetail = ({
   getBillDetail,
   bill: { loading, billDetail },
+  auth: { users },
   match,
 }) => {
   useEffect(() => {
     getBillDetail(match.params.id);
   }, [getBillDetail, match.params.id]);
+
+  // console.log(users);
+  var perform = {};
+  if (billDetail !== null) {
+    users.map((value, key) => {
+      if (value._id === billDetail.user) {
+        return perform = value;
+      }
+    });
+  }
 
   // console.log(bill);
   return loading && billDetail === null ? (
@@ -31,7 +42,7 @@ const BillDetail = ({
           <i className='fa fa-chevron-right'></i>
           <span className='admin__menu-home'>Bill Detail</span>
         </div>
-        <div classname='container'>
+        <div className='container'>
           <div className='row'>
             <div className='col-6 assign' style={{ margin: '0 auto' }}>
               <table className='table'>
@@ -57,7 +68,7 @@ const BillDetail = ({
                     </tr>
                     <tr>
                       <th scope='col'>Perform</th>
-                      <td>{billDetail.user}</td>
+                      <td>{perform.name}</td>
                     </tr>
                     <tr>
                       <th scope='col'>Date</th>
@@ -97,9 +108,11 @@ const BillDetail = ({
 const mapStateToProps = (state) => {
   return {
     bill: state.bill,
+    auth: state.auth,
   };
 };
 BillDetail.propTypes = {
+  auth: PropTypes.object.isRequired,
   bill: PropTypes.object.isRequired,
   getBillDetail: PropTypes.func.isRequired,
 };
