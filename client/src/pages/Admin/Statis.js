@@ -1,9 +1,11 @@
 import React, { useEffect, Fragment } from 'react';
+import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { getAllBills, getAllMission } from './../../actions/mission';
 import Spinner from './../../components/Spinner/Spinner';
 import './../../scss/statis.scss';
+import './../../scss/admin.scss';
 
 const Statis = ({
   getAllBills,
@@ -50,46 +52,58 @@ const Statis = ({
     <Spinner />
   ) : (
     <Fragment>
-      <div className='container'>
-        <div className='row'>
-          <div className='col-12 col-lg-3 chitiet'>
-            <div className='doanhthu'>
-              <div className='chiso'>
-                <p>{doanhThu} $</p>
-                <i className='fa fa-signal' aria-hidden='true' />
+      <section className='admin'>
+        <h2 className='admin__title'>Statistial</h2>
+        <div className='admin__menu'>
+          <span>
+            <Link to='/admin' exact='true' style={{ color: 'black' }}>
+              Admin
+            </Link>
+          </span>
+          <i className='fa fa-chevron-right'></i>
+          <span className='admin__menu-home'>Statistical</span>
+        </div>
+        <div className='container'>
+          <div className='row'>
+            <div className='col-12 col-lg-3 chitiet'>
+              <div className='doanhthu'>
+                <div className='chiso'>
+                  <p>{doanhThu} $</p>
+                  <i className='fa fa-signal' aria-hidden='true' />
+                </div>
+                <h5 className='tieude'>Doanh thu</h5>
               </div>
-              <h5 className='tieude'>Doanh thu</h5>
             </div>
-          </div>
-          <div className='col-12 col-lg-3 chitiet'>
-            <div className='loinhuan'>
-              <div className='chiso'>
-                <p>{loiNhuan} $</p>
-                <i className='fa fa-pie-chart' aria-hidden='true' />
+            <div className='col-12 col-lg-3 chitiet'>
+              <div className='loinhuan'>
+                <div className='chiso'>
+                  <p>{loiNhuan} $</p>
+                  <i className='fa fa-pie-chart' aria-hidden='true' />
+                </div>
+                <h5 className='tieude'>Lợi nhuận</h5>
               </div>
-              <h5 className='tieude'>Lợi nhuận</h5>
             </div>
-          </div>
-          <div className='col-12 col-lg-3 chitiet'>
-            <div className='tralaikho'>
-              <div className='chiso'>
-                <p>{spBanRa - tongSP}</p>
-                <i className='fa fa-truck' aria-hidden='true' />
+            <div className='col-12 col-lg-3 chitiet'>
+              <div className='tralaikho'>
+                <div className='chiso'>
+                  <p>{tongSP - spBanRa}</p>
+                  <i className='fa fa-truck' aria-hidden='true' />
+                </div>
+                <h5 className='tieude'>Trả lại kho</h5>
               </div>
-              <h5 className='tieude'>Trả lại kho</h5>
             </div>
-          </div>
-          <div className='col-12 col-lg-3 chitiet'>
-            <div className='tyle'>
-              <div className='chiso'>
-                <p>{((spBanRa / tongSP) * 100).toFixed(2)}</p>
-                <i className='fa fa-percent' aria-hidden='true' />
+            <div className='col-12 col-lg-3 chitiet'>
+              <div className='tyle'>
+                <div className='chiso'>
+                  <p>{((spBanRa / tongSP) * 100).toFixed(2)}</p>
+                  <i className='fa fa-percent' aria-hidden='true' />
+                </div>
+                <h5 className='tieude'>Tỷ lệ</h5>
               </div>
-              <h5 className='tieude'>Tỷ lệ</h5>
             </div>
           </div>
         </div>
-      </div>
+      </section>
     </Fragment>
   );
 };
