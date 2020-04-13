@@ -1,11 +1,10 @@
-import React, { Fragment, useEffect, useState } from 'react';
+import React, { Fragment, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import Spinner from './../../components/Spinner/Spinner';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { getAllProduct, planning } from './../../actions/product';
 import Alert from './../../components/Alert/Alert'
-
 
 const PlanningDetails = ({
   getAllProduct,
@@ -15,12 +14,17 @@ const PlanningDetails = ({
   auth: {users}
 
 }) => {
-  // const [check, setCheck] = useState(false)
+  
   useEffect(() => {
     getAllProduct();
   }, [getAllProduct]);
 
-  const [plans, setPlans] = useState([])
+  const submit = (e) => {
+    e.preventDefault();
+    planning(match.params.id, tuihang);
+    console.log(tuihang);
+    tuihang= [];
+  };
   var staff = {};
   users.map(val => {
     if(val._id === match.params.id){
@@ -29,30 +33,6 @@ const PlanningDetails = ({
     return staff
   })
   
-  const findItem = (arr, e) => {
-    var i = -1
-    arr.map((val, index) => {
-      if(e.id_product === val.id_product){
-        i = index
-      }
-      return i
-    })
-    return i
-  }
-  const pushItem =  (item) => {
-    const i = findItem(plans, item)
-    console.log(i)
-    if(i === -1){
-       setPlans([...plans, item])
-    }
-    else {
-       setPlans()
-      // console.log(i)
-    }
-    // console.log(plan)
-    
-  }
-  console.log(plans)
   return loading ? (
     <Spinner />
   ) : (
@@ -90,7 +70,6 @@ const PlanningDetails = ({
               item.id_product = val._id
               item.product = val.name;
               const onChange = (e) => {
-                
                 item.quantity = e.target.value;
               };
               item.price = val.export_price;
@@ -113,7 +92,15 @@ const PlanningDetails = ({
                     />
                   </td>
                   <td>
-                    <input type="checkbox"  onClick={() => pushItem(item)}  />
+                    <button
+                      
+                      className='btn btn-warning'
+                      onClick={(e) => {
+                        addItem(item);
+                      }}
+                    >
+                      Confirm
+                    </button>
                   </td>
                 </tr>
               );
@@ -122,7 +109,7 @@ const PlanningDetails = ({
         </table>
         <div className="container d-flex justify-content-center my-3">
           <Link to="/admin"><button className="btn btn-secondary px-4 mr-3">Back</button></Link>
-          <button className='btn btn-success' >
+          <button className='btn btn-success' onClick={(e) => submit(e)}>
             Complete
           </button>
         </div>
@@ -135,7 +122,12 @@ const PlanningDetails = ({
   );
 };
 
-
+var tuihang = [];
+const addItem = (e) => {
+  tuihang.push(e);
+  console.log(tuihang);
+  
+};
 
 PlanningDetails.propTypes = {
   getAllProduct: PropTypes.func.isRequired,
