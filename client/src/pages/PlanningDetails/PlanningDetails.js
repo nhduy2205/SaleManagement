@@ -39,6 +39,8 @@ const PlanningDetails = ({
     })
     return i
   }
+
+  //xử lí mỗi khi tích vào checkbox
   const pushItem =  (item) => {
     const i = findItem(plans, item)
     console.log(i)
@@ -55,6 +57,10 @@ const PlanningDetails = ({
     
   }
   console.log(plans)
+  const onSubmit = () => {
+    planning( match.params.id, plans)
+    setPlans([])
+  }
   return loading ? (
     <Spinner />
   ) : (
@@ -124,7 +130,7 @@ const PlanningDetails = ({
         </table>
         <div className="container d-flex justify-content-center my-3">
           <Link to="/admin"><button className="btn btn-secondary px-4 mr-3">Back</button></Link>
-          <button className='btn btn-success' >
+          <button className='btn btn-success' onClick = {() => onSubmit()}>
             Complete
           </button>
         </div>
