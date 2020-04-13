@@ -10,8 +10,8 @@ const ProductItem = ({product, index, deleteProduct}) => {
                 <th scope="row">{index+1}</th>
                 <td><b>{product.name.toUpperCase()}</b></td>
                 <td>{product.entry_price} $</td>
-                <td>{product.entry_quantity} </td>
-                <td>{product.quantity_sold} </td>
+                <td>{product.entry_quantity}</td>
+                <td>{product.quantity_sold}</td>
                 <td>{product.quantity_remaining}</td>
                 <td>{product.export_price} $</td>
                 <td>{product.manufacturer}</td>

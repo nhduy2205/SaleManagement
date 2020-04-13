@@ -58,10 +58,13 @@ router.post('/:id', auth, admin, async (req, res) => {
 //Xem kế hoạch
 router.get('/', auth, admin, async (req, res) => {
     try {
+        const date = new Date()
+        const todate = moment(date).format('YYYY-MM-DD')
         const plans = await Plan.find().sort({date: -1})
+        const plantodate = plans.filter(val => moment(val.date).format('YYYY-MM-DD') === todate)
         // console.log(moment('2020-04-06T15:14:42.632Z').format('YYYY-MM-DD'))
-       
-        return res.status(200).json(plans)    
+        
+        return res.status(200).json(plantodate)    
     } catch (error) {
         console.error(error.message)
         return res.status(500).json('Server Error!')

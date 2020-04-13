@@ -21,8 +21,9 @@ const BillDetail = ({
   if (billDetail !== null) {
     users.map((value, key) => {
       if (value._id === billDetail.user) {
-        return perform = value;
+         perform = value;
       }
+      return perform 
     });
   }
 

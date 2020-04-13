@@ -18,7 +18,7 @@ const WareHouse = ({ getProductPagination, product: { loading, productspgn } }) 
     getProductPagination(paramsString);
   }, [getProductPagination, paramsString]);
   const handleChangePage = (newPage) => {
-    console.log('NewPage', newPage)
+    // console.log('NewPage', newPage)
     setFilters({...filters, pageNo: newPage})
   }
   // console.log(products)
@@ -47,7 +47,7 @@ const WareHouse = ({ getProductPagination, product: { loading, productspgn } }) 
   //   total_export_price += val.quantity_sold * val.export_price
   //   return total_export_price
   // })
-  return loading &&  !productspgn ? (
+  return loading  ? (
     <Spinner />
   ) : (
     <Fragment>
@@ -75,9 +75,9 @@ const WareHouse = ({ getProductPagination, product: { loading, productspgn } }) 
           </tr>
         </thead>
         <tbody>
-          {productspgn && productspgn.data ? productspgn.data.map((val, index) => {
+          {productspgn && productspgn.data ? (productspgn.data.map((val, index) => {
             return <ProductItem key={index} index={index} product={val} />;
-          }) : ''}
+          })) : ""}
           {/* <tr>
             <th>Total</th>
             <th></th>

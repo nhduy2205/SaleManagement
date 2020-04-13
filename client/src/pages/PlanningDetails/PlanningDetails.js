@@ -5,6 +5,7 @@ import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { getAllProduct, planning } from './../../actions/product';
 import Alert from './../../components/Alert/Alert'
+
 const PlanningDetails = ({
   getAllProduct,
   planning,
@@ -13,6 +14,7 @@ const PlanningDetails = ({
   auth: {users}
 
 }) => {
+  
   useEffect(() => {
     getAllProduct();
   }, [getAllProduct]);
@@ -91,6 +93,7 @@ const PlanningDetails = ({
                   </td>
                   <td>
                     <button
+                      
                       className='btn btn-warning'
                       onClick={(e) => {
                         addItem(item);
@@ -123,6 +126,7 @@ var tuihang = [];
 const addItem = (e) => {
   tuihang.push(e);
   console.log(tuihang);
+  
 };
 
 PlanningDetails.propTypes = {
