@@ -46,7 +46,9 @@ const PlanningDetails = ({
        setPlans([...plans, item])
     }
     else {
-       setPlans()
+      var plan = plans.filter(val => val.id_product !== item.id_product)
+
+       setPlans(plan)
       // console.log(i)
     }
     // console.log(plan)
