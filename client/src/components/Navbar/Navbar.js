@@ -168,9 +168,7 @@ const Navbar = ({ auth: { isAuthenticated }, logout }) => {
                   >
                     Create bill
                   </Link>
-                  <a className='nav-item nav-link header-item' href='#/'>
-                    Add stores
-                  </a>
+                  
                 </div>
               </div>
             </nav>

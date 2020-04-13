@@ -1,13 +1,14 @@
 const express = require('express');
 const router = express.Router();
 const moment = require('moment');
-// const {check, validationResult} = require('express-validator')
+const {check, validationResult} = require('express-validator')
 const Product = require('./../../models/Product');
 const Bill = require('./../../models/Bill');
 const Plan = require('./../../models/Plan');
 const User = require('./../../models/User');
 const auth = require('./../../middleware/auth');
 const admin = require('./../../middleware/admin');
+
 
 // @route   GET api/bills/
 // @desc    route get bills
@@ -51,7 +52,22 @@ router.get('/:id', admin, async (req, res) => {
 // @desc    route post bills
 // @access  Private
 //tạo bill trog ngày hôm nay
-router.post('/', auth, async (req, res) => {
+router.post('/', 
+  [
+    auth,
+    // admin,
+    check('customer_name', 'CustomerName is required')
+      .not()
+      .isEmpty(),
+    check('customer_phone', 'Please include a valid email')
+      .not()
+      .isEmpty()
+    
+  ], async (req, res) => {
+    const errors = validationResult(req);
+    if (!errors.isEmpty()) {
+      return res.status(400).json({ errors: errors.array() });
+    }
   try {
     const bill_of_user = await Bill.find({ user: req.user.id });
     var count = 0;

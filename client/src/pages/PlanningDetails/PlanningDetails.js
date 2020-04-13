@@ -15,7 +15,7 @@ const PlanningDetails = ({
   auth: {users}
 
 }) => {
-  // const [check, setCheck] = useState(false)
+  
   useEffect(() => {
     getAllProduct();
   }, [getAllProduct]);

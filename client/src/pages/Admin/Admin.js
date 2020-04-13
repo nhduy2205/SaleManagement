@@ -6,11 +6,15 @@ import Spinner from './../../components/Spinner/Spinner';
 import PlanItem from './PlanItem';
 import {getAllUser} from './../../actions/auth'
 import { Redirect, Link } from 'react-router-dom';
+import { getAllMission } from '../../actions/mission';
 
-const Admin = ({getAllUser,  auth: { loading, users} }) => {
+const Admin = ({getAllUser, getAllMission,  auth: { loading, users}, mission: {missions} }) => {
   useEffect(() => {
     getAllUser()
   }, [getAllUser])
+  useEffect(() => {
+    getAllMission()
+  }, [getAllMission])
   const roleUser = users.filter(val => val.role === "user")
   const token = localStorage.getItem('token')
   if(!token){
@@ -31,7 +35,7 @@ const Admin = ({getAllUser,  auth: { loading, users} }) => {
         <div className='container'>
           
           <div className='row'>
-            <div className='col-12 col-lg-9 assign'>
+            <div className='col-12 col-lg-12 assign'>
               <table className='table'>
                 <thead className='thead-dark'>
                   <tr>
@@ -40,12 +44,13 @@ const Admin = ({getAllUser,  auth: { loading, users} }) => {
                     <th scope='col'>Email</th>
                     <th scope='col'>Locality</th>
                     <th scope='col'>Action</th>
+                    <th scope='col'>Status</th>
                   </tr>
                 </thead>
                 <tbody>
                   {
                     roleUser.map((val, index) => {
-                      return <PlanItem key={index} user={val} index={index}/>
+                      return <PlanItem key={index} user={val} index={index} missions={missions}/>
                     })
                   }
                   <tr>
@@ -58,19 +63,7 @@ const Admin = ({getAllUser,  auth: { loading, users} }) => {
                 </tbody>
               </table>
             </div>
-            <div className='col-12 col-lg-3 numeral'>
-              <div className='card' style={{ width: '18rem' }}>
-                <div className='card-header'>Index</div>
-                <table>
-                  <tbody>
-                    <tr>
-                      <th>Complete</th>
-                      <td>90%</td>
-                    </tr>
-                  </tbody>
-                </table>
-              </div>
-            </div>
+            
           </div>
         </div>
       </section>
@@ -79,10 +72,14 @@ const Admin = ({getAllUser,  auth: { loading, users} }) => {
 };
 const mapStateToProps = state => {
   return {
-    auth: state.auth
+    auth: state.auth,
+    mission: state.mission
   };
 };
 Admin.propTypes = {
-  auth: PropTypes.object.isRequired
+  auth: PropTypes.object.isRequired,
+  mission: PropTypes.object.isRequired,
+  getAllUser: PropTypes.func.isRequired,
+  getAllMission: PropTypes.func.isRequired
 };
-export default connect(mapStateToProps, {getAllUser})(Admin);
+export default connect(mapStateToProps, {getAllUser, getAllMission})(Admin);
