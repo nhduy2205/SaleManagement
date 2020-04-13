@@ -1,5 +1,11 @@
 import axios from 'axios';
-import { GET_USERMISSION, CREATE_BILLS_SUCCESS, BILLS_LOADED, BILL_DETAIL } from './types';
+import {
+  GET_USERMISSION,
+  CREATE_BILLS_SUCCESS,
+  BILLS_LOADED,
+  BILL_DETAIL,
+  GET_ALL_MISSION,
+} from './types';
 import { setAlert } from './alert';
 
 // get user mission
@@ -8,6 +14,19 @@ export const getUserMission = () => async (dispatch) => {
     const res = await axios.get('/api/plans/mission');
     dispatch({
       type: GET_USERMISSION,
+      payload: res.data,
+    });
+  } catch (error) {
+    console.error(error);
+  }
+};
+
+// get all plans
+export const getAllMission = () => async (dispatch) => {
+  try {
+    const res = await axios.get('/api/plans');
+    dispatch({
+      type: GET_ALL_MISSION,
       payload: res.data,
     });
   } catch (error) {

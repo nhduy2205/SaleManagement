@@ -107,9 +107,9 @@ const Navbar = ({ auth: { isAuthenticated }, logout }) => {
                   >
                     Import goods
                   </Link>
-                  <a className='nav-item nav-link header-item' href='#/'>
-                    Staff
-                  </a>
+                  <Link className='nav-item nav-link header-item' to='/statis'>
+                    Statistical
+                  </Link>
                   <Link
                     to='/allbills'
                     className='nav-item nav-link header-item'
