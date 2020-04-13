@@ -16,7 +16,7 @@ const Statis = ({
   useEffect(() => {
     getAllBills();
     getAllMission();
-  }, [getAllBills]);
+  }, [getAllBills, getAllMission]);
   console.log(bills);
 
   var doanhThu = 0;
@@ -37,23 +37,22 @@ const Statis = ({
     bills.map((value, key) => {
       doanhThu += value.total_price;
       loiNhuan += value.total_price - value.total_price / 1.2;
-
       // tim san pham ban ra
       value.bills.map((value, key) => {
         spBanRa += value.quantity;
       });
     });
   }
-  console.log(doanhThu);
-  console.log(loiNhuan);
-  console.log(spBanRa);
-  console.log(tongSP);
+  //   console.log(doanhThu);
+  //   console.log(loiNhuan);
+  //   console.log(spBanRa);
+  //   console.log(tongSP);
   return loading ? (
     <Spinner />
   ) : (
     <Fragment>
       <section className='admin'>
-        <h2 className='admin__title'>Statistial</h2>
+        <h2 className='admin__title'>Statistical</h2>
         <div className='admin__menu'>
           <span>
             <Link to='/admin' exact='true' style={{ color: 'black' }}>

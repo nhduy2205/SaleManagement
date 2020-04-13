@@ -26,7 +26,7 @@ const Login = ({ login, isAuthenticated }) => {
   if (isAuthenticated) {
     const decoded = jwtDecode(localStorage.getItem('token'));
     if (decoded.user.role === 'admin') return <Redirect to='/admin' exact />;
-    else if (decoded.user.role === 'user') return <Redirect to='/user' exact />;
+    else if (decoded.user.role === 'user') return <Redirect to='/mission' exact />;
   }
   return (
     <div className='bg-img'>

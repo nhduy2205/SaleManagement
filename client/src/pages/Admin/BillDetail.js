@@ -21,9 +21,9 @@ const BillDetail = ({
   if (billDetail !== null) {
     users.map((value, key) => {
       if (value._id === billDetail.user) {
-         perform = value;
+        perform = value;
       }
-      return perform 
+      return perform;
     });
   }
 
@@ -55,32 +55,32 @@ const BillDetail = ({
 
                 {billDetail ? (
                   <tbody>
-                    <tr>
+                    <tr key={1}>
                       <th scope='col'>Id: </th>
                       <td>{billDetail._id}</td>
                     </tr>
-                    <tr>
+                    <tr key={2}>
                       <th scope='col'>Custumer</th>
                       <td>{billDetail.customer_name}</td>
                     </tr>
-                    <tr>
+                    <tr key={3}>
                       <th scope='col'>Phone</th>
                       <td>{billDetail.customer_phone}</td>
                     </tr>
-                    <tr>
+                    <tr key={4}>
                       <th scope='col'>Perform</th>
                       <td>{perform.name}</td>
                     </tr>
-                    <tr>
+                    <tr key={5}>
                       <th scope='col'>Date</th>
                       <td>{billDetail.date}</td>
                     </tr>
-                    <tr>
+                    <tr key={6}>
                       <th scope='col'>Products</th>
                       <td>
                         {billDetail.bills.map((value, key) => {
                           return (
-                            <p>
+                            <p key={key}>
                               {value.product}: {value.quantity}x{value.price}{' '}
                               <strong>$</strong>
                             </p>
@@ -88,16 +88,14 @@ const BillDetail = ({
                         })}
                       </td>
                     </tr>
-                    <tr>
+                    <tr key={7}>
                       <th scope='col'>Total bill</th>
                       <td>
                         {billDetail.total_price} <strong>$</strong>
                       </td>
                     </tr>
                   </tbody>
-                ) : (
-                  ''
-                )}
+                ) : null}
               </table>
             </div>
           </div>

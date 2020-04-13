@@ -155,7 +155,7 @@ const Navbar = ({ auth: { isAuthenticated }, logout }) => {
               <div className='collapse navbar-collapse' id='navbarNavAltMarkup'>
                 <div className='navbar-nav'>
                   <Link
-                    to='/plan'
+                    to='/mission'
                     className='nav-item nav-link active header-item'
                     exact='true'
                   >
@@ -167,13 +167,6 @@ const Navbar = ({ auth: { isAuthenticated }, logout }) => {
                     className='nav-item nav-link header-item'
                   >
                     Create bill
-                  </Link>
-                  <Link
-                    to='/mission'
-                    exact='true'
-                    className='nav-item nav-link header-item'
-                  >
-                    Bag
                   </Link>
                   <a className='nav-item nav-link header-item' href='#/'>
                     Add stores
