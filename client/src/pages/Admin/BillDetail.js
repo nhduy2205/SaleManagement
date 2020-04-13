@@ -28,7 +28,7 @@ const BillDetail = ({
   }
 
   // console.log(bill);
-  return loading && billDetail === null ? (
+  return loading   ? (
     <Spinner />
   ) : (
     <Fragment>
@@ -80,7 +80,7 @@ const BillDetail = ({
                       <td>
                         {billDetail.bills.map((value, key) => {
                           return (
-                            <p>
+                            <p key={key}>
                               {value.product}: {value.quantity}x{value.price}{' '}
                               <strong>$</strong>
                             </p>
