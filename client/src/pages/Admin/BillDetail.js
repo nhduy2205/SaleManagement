@@ -28,7 +28,7 @@ const BillDetail = ({
   }
 
   // console.log(bill);
-  return loading && billDetail === null ? (
+  return loading   ? (
     <Spinner />
   ) : (
     <Fragment>

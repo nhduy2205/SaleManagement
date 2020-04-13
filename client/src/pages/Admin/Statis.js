@@ -29,7 +29,9 @@ const Statis = ({
     missions.map((value, key) => {
       value.product_list.map((value, key) => {
         tongSP += value.quantity;
+        return tongSP
       });
+      return tongSP
     });
   }
 
@@ -40,7 +42,10 @@ const Statis = ({
       // tim san pham ban ra
       value.bills.map((value, key) => {
         spBanRa += value.quantity;
+        return spBanRa
       });
+      return spBanRa
+      
     });
   }
   //   console.log(doanhThu);
