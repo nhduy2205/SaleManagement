@@ -5,7 +5,7 @@ import { logout } from './../../actions/auth';
 import jwtDecode from 'jwt-decode';
 import { Link } from 'react-router-dom';
 
-const Navbar = ({ auth: { isAuthenticated }, logout }) => {
+const Navbar = ({ auth, logout }) => {
   function getVNTime() {
     var time = new Date();
     var dow = time.getDay();
@@ -50,9 +50,9 @@ const Navbar = ({ auth: { isAuthenticated }, logout }) => {
   }
   showTime();
   const showLink = () => {
-    if (isAuthenticated === null) {
+    if (auth.isAuthenticated === null) {
       return '';
-    } else if (isAuthenticated) {
+    } else if (auth.isAuthenticated) {
       var decoded = jwtDecode(localStorage.getItem('token'));
       //   console.log(decoded);
       if (decoded.user.role === 'admin') {
@@ -63,6 +63,7 @@ const Navbar = ({ auth: { isAuthenticated }, logout }) => {
                 <div className='header-datenow' id='vnclock'>
                   {/* {time()} */}
                 </div>
+                <img className="mr-3 mb-2" src={ auth && auth.user ? auth.user.avatar : ''}  style={{width: '2rem',height: '2rem', borderRadius: '50%' }} alt=""/>
                 <i className='fa fa-user' />
                 Admin
                 <a href='/' onClick={logout} className='logout-btn ml-3'>
@@ -129,6 +130,7 @@ const Navbar = ({ auth: { isAuthenticated }, logout }) => {
                 <div className='header-datenow' id='vnclock'>
                   {/* {time()} */}
                 </div>
+                <img className="mr-3 mb-2" src={ auth && auth.user ? auth.user.avatar : ''}  style={{width: '2rem',height: '2rem', borderRadius: '50%' }} alt=""/>
                 <i className='fa fa-user' />
                 User
                 <a href='/' onClick={logout} className='login-btn ml-3'>

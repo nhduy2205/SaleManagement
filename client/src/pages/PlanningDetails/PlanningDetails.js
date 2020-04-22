@@ -121,7 +121,7 @@ const PlanningDetails = ({
                     />
                   </td>
                   <td>
-                    <input type="checkbox"  onClick={() => pushItem(item)}  />
+                    <input type="checkbox" className="option-input checkbox"  onClick={() => pushItem(item)}  />
                   </td>
                 </tr>
               );

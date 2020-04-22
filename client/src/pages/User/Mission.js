@@ -18,7 +18,7 @@ const Mission = ({ getUserMission, plan: { mission, loading } }) => {
       <h2 className='admin__title'>Mission of the day</h2>
       <div className='admin__menu'>
         <span>
-          <Link to='/user' exact='true' style={{ color: 'black' }}>
+          <Link to='/mission' exact='true' style={{ color: 'black' }}>
             User
           </Link>
         </span>

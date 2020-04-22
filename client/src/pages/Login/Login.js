@@ -49,6 +49,7 @@ const Login = ({ login, isAuthenticated }) => {
               onChange={e => onChange(e)}
             />
           </div>
+          <small id="emailHelp" className="form-text text-muted">admin@gmail.com, user1@gmail.com,...</small>
         </div>
         <div className='form-group login-input'>
           <div className='input-group mb-3'>
@@ -66,6 +67,7 @@ const Login = ({ login, isAuthenticated }) => {
               onChange={e => onChange(e)}
             />
           </div>
+          <small id="emailHelp" className="form-text text-muted">pwadmin, pwuser1,...</small>
         </div>
         <Alert/>
         <input

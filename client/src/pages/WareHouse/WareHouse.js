@@ -77,7 +77,7 @@ const WareHouse = ({ getProductPagination, product: { loading, productspgn } }) 
         <tbody>
           {productspgn && productspgn.data ? (productspgn.data.map((val, index) => {
             return <ProductItem key={index} index={index} product={val} />;
-          })) : ""}
+          })) : null}
           {/* <tr>
             <th>Total</th>
             <th></th>

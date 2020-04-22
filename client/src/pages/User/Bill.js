@@ -69,7 +69,7 @@ const Mission = ({
       <h2 className='admin__title'>Create bill</h2>
       <div className='admin__menu'>
         <span>
-          <Link to='/user' exact='true' style={{ color: 'black' }}>
+          <Link to='/mission' exact='true' style={{ color: 'black' }}>
             User
           </Link>
         </span>
@@ -101,7 +101,7 @@ const Mission = ({
                   item.product = value.product;
                   const onChange = (e) => {
                     if (e.target.value > value.quantity) {
-                      setAlert('The quantity is not valid', 'danger', 2000)
+                      setAlert('The quantity is not valid', 'danger', 1000)
                       
                       item.quantity = value.quantity;
                     } else item.quantity = e.target.value;
@@ -129,7 +129,7 @@ const Mission = ({
                       <td>
                         <input
                           type='checkbox'
-                          
+                          className="option-input checkbox"
                           onClick={() => {
                             addBill(item);
                           }}
